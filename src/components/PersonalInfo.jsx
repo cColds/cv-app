@@ -20,23 +20,27 @@ export default class PersonalInfo extends Component {
             className="personal-info-form hide"
             onSubmit={(e) => e.preventDefault()}
           >
-            <label htmlFor="full-name">Full Name</label>
-            <input id="full-name" placeholder="John Smith" />
-
-            <label htmlFor="phone">Phone</label>
-            <input
-              type="tel"
-              id="phone"
-              placeholder="123-456-7890"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-            />
-
-            <label htmlFor="email">Email</label>
-            <input id="email" placeholder="example@address.com" />
-
-            <label htmlFor="address">Address</label>
-            <input id="address" placeholder="City, Country" />
-
+            <label htmlFor="full-name">
+              Full Name
+              <input id="full-name" placeholder="John Smith" />
+            </label>
+            <label htmlFor="phone">
+              Phone
+              <input
+                type="tel"
+                id="phone"
+                placeholder="123-456-7890"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              />
+            </label>
+            <label htmlFor="email">
+              Email
+              <input id="email" placeholder="example@address.com" />
+            </label>
+            <label htmlFor="address">
+              Address
+              <input id="address" placeholder="City, Country" />
+            </label>
             <button type="submit">Save</button>
           </form>
         </div>

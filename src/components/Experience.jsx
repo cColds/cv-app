@@ -26,24 +26,26 @@ export default class Experience extends Component {
             className="experience-form hide"
             onSubmit={(e) => e.preventDefault()}
           >
-            <label htmlFor="experience-location">Location</label>
-            <input id="experience-location" placeholder="Mountain View, CA" />
-
-            <label htmlFor="experience-company">Company</label>
-            <input id="experience-company" placeholder="Google" />
-
-            <label htmlFor="experience-start-date">Start Date</label>
-            <input id="experience-start-date" placeholder="May 2020" />
-
-            <label htmlFor="experience-end-date">End Date</label>
-            <input id="experience-end-date" placeholder="Sep. 2022" />
-
-            <label htmlFor="experience-description">Description</label>
-            <textarea
-              id="experience-description"
-              rows="10"
-              cols="30"
-            ></textarea>
+            <label htmlFor="experience-location">
+              Location
+              <input id="experience-location" placeholder="Mountain View, CA" />
+            </label>
+            <label htmlFor="experience-company">
+              Company
+              <input id="experience-company" placeholder="Google" />
+            </label>
+            <label htmlFor="experience-start-date">
+              Start Date
+              <input id="experience-start-date" placeholder="May 2020" />
+            </label>
+            <label htmlFor="experience-end-date">
+              End Date
+              <input id="experience-end-date" placeholder="Sep. 2022" />
+            </label>
+            <label htmlFor="experience-description">
+              Description
+              <textarea id="experience-description" rows="10" cols="30" />
+            </label>
 
             <button type="submit">Save</button>
           </form>

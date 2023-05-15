@@ -17,12 +17,13 @@ export default class Skills extends Component {
             className="skills-form hide"
             onSubmit={(e) => e.preventDefault()}
           >
-            <label htmlFor="skills-technologies">Technologies</label>
-            <input
-              id="skills-technologies"
-              placeholder="Git, React, and MongoDB"
-            />
-
+            <label htmlFor="skills-technologies">
+              Technologies
+              <input
+                id="skills-technologies"
+                placeholder="Git, React, and MongoDB"
+              />
+            </label>
             <button type="submit">Save</button>
           </form>
         </div>

@@ -26,24 +26,29 @@ export default class Education extends Component {
             className="education-form hide"
             onSubmit={(e) => e.preventDefault()}
           >
-            <label htmlFor="school">School</label>
-            <input id="school" placeholder="Stanford University" />
-
-            <label htmlFor="degree">Degree</label>
-            <input
-              id="degree"
-              placeholder="Bachelor of Arts in Computer Science"
-            />
-
-            <label htmlFor="education-start-date">Start Date</label>
-            <input id="education-start-date" placeholder="May 2020" />
-
-            <label htmlFor="education-end-date">End Date</label>
-            <input id="education-end-date" placeholder="Sep. 2022" />
-
-            <label htmlFor="education-description">Description</label>
-            <textarea id="education-description" rows="10" cols="30"></textarea>
-
+            <label htmlFor="school">
+              School
+              <input id="school" placeholder="Stanford University" />
+            </label>
+            <label htmlFor="degree">
+              Degree
+              <input
+                id="degree"
+                placeholder="Bachelor of Arts in Computer Science"
+              />
+            </label>
+            <label htmlFor="education-start-date">
+              Start Date
+              <input id="education-start-date" placeholder="May 2020" />
+            </label>
+            <label htmlFor="education-end-date">
+              End Date
+              <input id="education-end-date" placeholder="Sep. 2022" />
+            </label>
+            <label htmlFor="education-description">
+              Description
+              <textarea id="education-description" rows="10" cols="30" />
+            </label>
             <button type="submit">Save</button>
           </form>
         </div>
