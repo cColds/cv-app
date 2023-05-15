@@ -1,0 +1,67 @@
+.cv {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  border: 2px solid #ddd;
+  width: 50%;
+  height: 75%;
+  padding: 1.5rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.heading {
+  border-bottom: 2px solid #ddd;
+}
+
+.personal-info,
+.experience,
+.education,
+.projects,
+.skills {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.experience-preview,
+.education-preview,
+.projects-preview,
+.skills-preview {
+  display: flex;
+  justify-content: space-between;
+}
+
+.heading {
+  text-transform: uppercase;
+}
+
+.personal-info {
+  display: flex;
+  justify-content: center;
+}
+
+.personal-info-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact {
+  display: flex;
+  gap: 15px;
+}
+
+.date-location {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.projects-info span {
+  font-size: 1rem;
+}
+
+.content {
+  padding-top: 0.25rem;
+}

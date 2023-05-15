@@ -1,13 +1,18 @@
 import { Component } from "react";
+import Cv from "./components/Cv";
+import "./styles/css/app.css";
+import "./styles/css/cv.css";
 
-class App extends Component {
+export default class App extends Component {
   constructor() {
     super();
   }
 
   render() {
-    return <div className="App">Test</div>;
+    return (
+      <div className="app">
+        <Cv />
+      </div>
+    );
   }
 }
-
-export default App;
