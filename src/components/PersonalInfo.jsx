@@ -4,22 +4,19 @@ export default class PersonalInfo extends Component {
   render() {
     return (
       <div className="personal-info">
-        <div className="content">
+        <div className="content-container">
           <div className="personal-info-preview">
             <h1>Full Name</h1>
             <h2>
               <i>Job Title</i>
             </h2>
             <div className="contact">
-              <h3>1234-324-444</h3>
+              <h3>123-456-7890</h3>
               <h3>example@address.com</h3>
             </div>
           </div>
 
-          <form
-            className="personal-info-form hide"
-            onSubmit={(e) => e.preventDefault()}
-          >
+          <form className="hide" onSubmit={(e) => e.preventDefault()}>
             <label htmlFor="full-name">
               Full Name
               <input id="full-name" placeholder="John Smith" />

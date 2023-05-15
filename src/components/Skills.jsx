@@ -5,18 +5,13 @@ export default class Skills extends Component {
     return (
       <div className="skills">
         <h2 className="heading">Skills</h2>
-        <div className="content">
-          <div className="skills-preview">
-            <div className="skills-info">
-              <h3>
-                <strong>Frameworks:</strong> React, Angular, and NextJS
-              </h3>
-            </div>
+        <div className="content-container">
+          <div className="skills-info">
+            <h3>
+              <strong>Frameworks:</strong> React, Angular, and NextJS
+            </h3>
           </div>
-          <form
-            className="skills-form hide"
-            onSubmit={(e) => e.preventDefault()}
-          >
+          <form className="hide" onSubmit={(e) => e.preventDefault()}>
             <label htmlFor="skills-technologies">
               Technologies
               <input

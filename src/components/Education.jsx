@@ -5,8 +5,8 @@ export default class Education extends Component {
     return (
       <div className="education">
         <h2 className="heading">Education</h2>
-        <div className="content">
-          <div className="education-preview">
+        <div className="content-container">
+          <div className="preview">
             <div className="education-info">
               <h3>
                 <strong>Stanford University</strong>
@@ -22,10 +22,7 @@ export default class Education extends Component {
             </div>
           </div>
 
-          <form
-            className="education-form hide"
-            onSubmit={(e) => e.preventDefault()}
-          >
+          <form className="hide" onSubmit={(e) => e.preventDefault()}>
             <label htmlFor="school">
               School
               <input id="school" placeholder="Stanford University" />

@@ -5,8 +5,8 @@ export default class Experience extends Component {
     return (
       <div className="experience">
         <h2 className="heading">Experience</h2>
-        <div className="content">
-          <div className="experience-preview">
+        <div className="content-container">
+          <div className="preview">
             <div className="job-info">
               <h3>
                 <strong>Google</strong>
@@ -22,10 +22,39 @@ export default class Experience extends Component {
             </div>
           </div>
 
-          <form
-            className="experience-form hide"
-            onSubmit={(e) => e.preventDefault()}
-          >
+          <div className="preview">
+            <div className="job-info">
+              <h3>
+                <strong>Google</strong>
+              </h3>
+              <div>
+                <i>Software Engineer</i>
+              </div>
+              <div>Description</div>
+            </div>
+            <div className="date-location">
+              <div>May 2020 – Sep. 2022</div>
+              <div>Brooklyn, NY</div>
+            </div>
+          </div>
+
+          <div className="preview">
+            <div className="job-info">
+              <h3>
+                <strong>Google</strong>
+              </h3>
+              <div>
+                <i>Software Engineer</i>
+              </div>
+              <div>Description</div>
+            </div>
+            <div className="date-location">
+              <div>May 2020 – Sep. 2022</div>
+              <div>Brooklyn, NY</div>
+            </div>
+          </div>
+
+          <form className="hide" onSubmit={(e) => e.preventDefault()}>
             <label htmlFor="experience-location">
               Location
               <input id="experience-location" placeholder="Mountain View, CA" />
