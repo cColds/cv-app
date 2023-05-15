@@ -11,6 +11,9 @@ export default class Skills extends Component {
               <strong>Frameworks:</strong> React, Angular, and NextJS
             </h3>
           </div>
+
+          <button type="button">Add Skills</button>
+
           <form className="hide" onSubmit={(e) => e.preventDefault()}>
             <label htmlFor="skills-technologies">
               Technologies

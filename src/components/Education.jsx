@@ -22,6 +22,8 @@ export default class Education extends Component {
             </div>
           </div>
 
+          <button type="button">Add Education</button>
+
           <form className="hide" onSubmit={(e) => e.preventDefault()}>
             <label htmlFor="school">
               School

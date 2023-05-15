@@ -19,6 +19,8 @@ export default class Projects extends Component {
             <div>May 2020 – Sep. 2022</div>
           </div>
 
+          <button type="button">Add Projects</button>
+
           <form className="hide" onSubmit={(e) => e.preventDefault()}>
             <label htmlFor="projects-name">
               Project Name
