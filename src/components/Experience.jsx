@@ -3,11 +3,11 @@ import { Component } from "react";
 export default class Experience extends Component {
   render() {
     return (
-      <div className="experience">
+      <section className="experience section">
         <h2 className="heading">Experience</h2>
         <div className="content-container">
-          <div className="preview">
-            <div className="job-info">
+          <div className="item">
+            <div className="main-info">
               <h3>
                 <strong>Google</strong>
               </h3>
@@ -16,7 +16,23 @@ export default class Experience extends Component {
               </div>
               <div>Description</div>
             </div>
-            <div className="date-location">
+            <div className="side-info">
+              <div>May 2020 – Sep. 2022</div>
+              <div>Brooklyn, NY</div>
+            </div>
+          </div>
+
+          <div className="item">
+            <div className="main-info">
+              <h3>
+                <strong>Google</strong>
+              </h3>
+              <div>
+                <i>Software Engineer</i>
+              </div>
+              <div>Description</div>
+            </div>
+            <div className="side-info">
               <div>May 2020 – Sep. 2022</div>
               <div>Brooklyn, NY</div>
             </div>
@@ -49,7 +65,7 @@ export default class Experience extends Component {
             <button type="submit">Save</button>
           </form>
         </div>
-      </div>
+      </section>
     );
   }
 }

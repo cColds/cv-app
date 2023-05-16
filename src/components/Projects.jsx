@@ -3,11 +3,11 @@ import { Component } from "react";
 export default class Projects extends Component {
   render() {
     return (
-      <div className="projects">
+      <section className="projects section">
         <h2 className="heading">Projects</h2>
         <div className="content-container">
-          <div className="preview">
-            <div className="projects-info">
+          <div className="item">
+            <div className="main-info">
               <h3>
                 <strong>Tic Tac Toe</strong> |
                 <span>
@@ -16,7 +16,9 @@ export default class Projects extends Component {
               </h3>
               <div>Description</div>
             </div>
-            <div>May 2020 – Sep. 2022</div>
+            <div className="side-info">
+              <div>May 2020 – Sep. 2022</div>
+            </div>
           </div>
 
           <button type="button">Add Projects</button>
@@ -48,7 +50,7 @@ export default class Projects extends Component {
             <button type="submit">Save</button>
           </form>
         </div>
-      </div>
+      </section>
     );
   }
 }

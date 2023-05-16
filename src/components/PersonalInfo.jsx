@@ -3,16 +3,16 @@ import { Component } from "react";
 export default class PersonalInfo extends Component {
   render() {
     return (
-      <div className="personal-info">
+      <section className="personal-info section">
         <div className="content-container">
-          <div className="personal-info-preview">
+          <div className="item">
             <h1>Full Name</h1>
             <h2>
               <i>Job Title</i>
             </h2>
             <div className="contact">
-              <h3>123-456-7890</h3>
-              <h3>example@address.com</h3>
+              <h3>Phone</h3>
+              <h3>Email</h3>
             </div>
           </div>
 
@@ -41,7 +41,7 @@ export default class PersonalInfo extends Component {
             <button type="submit">Save</button>
           </form>
         </div>
-      </div>
+      </section>
     );
   }
 }

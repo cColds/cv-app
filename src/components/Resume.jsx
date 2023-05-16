@@ -5,7 +5,7 @@ import Education from "./Education";
 import Projects from "./Projects";
 import Skills from "./Skills";
 
-export default class Cv extends Component {
+export default class Resume extends Component {
   constructor() {
     super();
 
@@ -14,7 +14,7 @@ export default class Cv extends Component {
 
   render() {
     return (
-      <div className="cv">
+      <div className="resume">
         <PersonalInfo />
         <Experience />
         <Education />

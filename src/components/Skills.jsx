@@ -3,13 +3,15 @@ import { Component } from "react";
 export default class Skills extends Component {
   render() {
     return (
-      <div className="skills">
+      <section className="skills section">
         <h2 className="heading">Skills</h2>
         <div className="content-container">
-          <div className="skills-info">
-            <h3>
-              <strong>Frameworks:</strong> React, Angular, and NextJS
-            </h3>
+          <div className="item">
+            <div className="main-info">
+              <h3>
+                <strong>Frameworks:</strong> React, Angular, and NextJS
+              </h3>
+            </div>
           </div>
 
           <button type="button">Add Skills</button>
@@ -25,7 +27,7 @@ export default class Skills extends Component {
             <button type="submit">Save</button>
           </form>
         </div>
-      </div>
+      </section>
     );
   }
 }

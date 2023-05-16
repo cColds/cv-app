@@ -3,11 +3,11 @@ import { Component } from "react";
 export default class Education extends Component {
   render() {
     return (
-      <div className="education">
+      <section className="education section">
         <h2 className="heading">Education</h2>
         <div className="content-container">
-          <div className="preview">
-            <div className="education-info">
+          <div className="item">
+            <div className="main-info">
               <h3>
                 <strong>Stanford University</strong>
               </h3>
@@ -16,7 +16,7 @@ export default class Education extends Component {
               </div>
               <div>Description</div>
             </div>
-            <div className="date-location">
+            <div className="side-info">
               <div>May 2020 – Sep. 2022</div>
               <div>Brooklyn, NY</div>
             </div>
@@ -51,7 +51,7 @@ export default class Education extends Component {
             <button type="submit">Save</button>
           </form>
         </div>
-      </div>
+      </section>
     );
   }
 }
