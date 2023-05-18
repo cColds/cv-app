@@ -9,13 +9,21 @@ export default class Resume extends Component {
   constructor() {
     super();
 
-    this.state = {};
+    this.state = {
+      personalInfo: {
+        item: { fullName: "", jobTitle: "", phone: "", email: "" },
+        form: { fullName: "", jobTitle: "", phone: "", email: "" },
+      },
+    };
   }
 
   render() {
+    const { personalInfo } = this.state;
+    const { fullName } = personalInfo.form;
+
     return (
       <div className="resume">
-        <PersonalInfo />
+        <PersonalInfo fullName={fullName} />
         <Experience />
         <Education />
         <Projects />

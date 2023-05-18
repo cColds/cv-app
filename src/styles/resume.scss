@@ -29,15 +29,20 @@
       .item {
         display: flex;
         justify-content: space-between;
-      }
-      .side-info {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-      }
 
-      .main-info span {
-        font-size: 1rem;
+        .main-info span {
+          font-size: 1rem;
+        }
+
+        .side-info {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+        }
+
+        .options button {
+          display: flex;
+        }
       }
     }
   }
