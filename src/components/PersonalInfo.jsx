@@ -3,8 +3,14 @@ import PropTypes from "prop-types";
 
 export default class PersonalInfo extends Component {
   render() {
-    const { setPersonalInfoForm, setPersonalInfoItem, toggleForm, isFormOpen } =
-      this.props;
+    const {
+      setPersonalInfoForm,
+      setPersonalInfoItem,
+      toggleForm,
+      isFormOpen,
+      personalInfo,
+    } = this.props;
+    const { fullName, jobTitle, phone, email, address } = personalInfo.item;
 
     return (
       <section className="personal-info section">
@@ -18,14 +24,14 @@ export default class PersonalInfo extends Component {
                 </svg>
               </button>
             </div>
-            <h1>Full Name</h1>
+            <h1>{fullName}</h1>
             <h2>
-              <i>Job Title</i>
+              <i>{jobTitle}</i>
             </h2>
             <div className="contact">
-              <h3>Phone</h3>
-              <h3>Email</h3>
-              <h3>Address</h3>
+              <h3>{phone}</h3>
+              <h3>{email}</h3>
+              <h3>{address}</h3>
             </div>
           </div>
 
@@ -107,7 +113,13 @@ PersonalInfo.propTypes = {
   setPersonalInfoItem: PropTypes.func,
   toggleForm: PropTypes.func,
   personalInfo: PropTypes.shape({
-    form: PropTypes.shape({ fullName: PropTypes.string }),
+    item: PropTypes.shape({
+      fullName: PropTypes.string,
+      jobTitle: PropTypes.string,
+      phone: PropTypes.string,
+      email: PropTypes.string,
+      address: PropTypes.string,
+    }),
   }),
   isFormOpen: PropTypes.bool,
 };
