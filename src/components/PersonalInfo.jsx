@@ -49,7 +49,7 @@ export default class PersonalInfo extends Component {
                 id="full-name"
                 placeholder="John Smith"
                 name="fullName"
-                onChange={(e) => setPersonalInfoForm(e)}
+                onChange={setPersonalInfoForm}
               />
             </label>
 
@@ -59,7 +59,7 @@ export default class PersonalInfo extends Component {
                 id="job-title"
                 placeholder="Software Engineer"
                 name="jobTitle"
-                onChange={(e) => setPersonalInfoForm(e)}
+                onChange={setPersonalInfoForm}
               />
             </label>
 
@@ -71,7 +71,7 @@ export default class PersonalInfo extends Component {
                 placeholder="123-456-7890"
                 pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}"
                 name="phone"
-                onChange={(e) => setPersonalInfoForm(e)}
+                onChange={setPersonalInfoForm}
               />
             </label>
             <label htmlFor="email">
@@ -80,7 +80,7 @@ export default class PersonalInfo extends Component {
                 id="email"
                 placeholder="example@address.com"
                 name="email"
-                onChange={(e) => setPersonalInfoForm(e)}
+                onChange={setPersonalInfoForm}
               />
             </label>
             <label htmlFor="address">
@@ -89,7 +89,7 @@ export default class PersonalInfo extends Component {
                 id="address"
                 placeholder="City, Country"
                 name="address"
-                onChange={(e) => setPersonalInfoForm(e)}
+                onChange={setPersonalInfoForm}
               />
             </label>
             <button type="submit">Save</button>
