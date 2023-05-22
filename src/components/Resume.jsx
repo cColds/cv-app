@@ -14,7 +14,8 @@ export default class Resume extends Component {
         item: { fullName: "", jobTitle: "", phone: "", email: "" },
         form: { fullName: "", jobTitle: "", phone: "", email: "" },
       },
-      displayForm: { personalInfo: false },
+
+      displayForm: { personalInfo: false, experience: false },
     };
 
     this.setPersonalInfoForm = this.setPersonalInfoForm.bind(this);
@@ -38,8 +39,7 @@ export default class Resume extends Component {
     });
   }
 
-  setPersonalInfoItem(e) {
-    e.preventDefault();
+  setPersonalInfoItem() {
     const { personalInfo } = this.state;
     const { form } = personalInfo;
     const updateItem = {
@@ -74,7 +74,10 @@ export default class Resume extends Component {
           personalInfo={personalInfo}
           isFormOpen={displayForm.personalInfo}
         />
-        <Experience />
+        <Experience
+          isFormOpen={displayForm.experience}
+          toggleForm={this.toggleForm}
+        />
         <Education />
         <Projects />
         <Skills />

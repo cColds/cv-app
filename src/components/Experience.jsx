@@ -1,12 +1,15 @@
 import { Component } from "react";
+import PropTypes from "prop-types";
 
 export default class Experience extends Component {
   render() {
+    const { isFormOpen, toggleForm } = this.props;
+
     return (
       <section className="experience section">
         <h2 className="heading">Experience</h2>
         <div className="content-container">
-          <div className="item">
+          <div className={`item ${isFormOpen ? "hide" : ""}`}>
             <div className="main-info">
               <h3>
                 <strong>Google</strong>
@@ -22,25 +25,23 @@ export default class Experience extends Component {
             </div>
           </div>
 
-          <div className="item">
-            <div className="main-info">
-              <h3>
-                <strong>Google</strong>
-              </h3>
-              <div>
-                <i>Software Engineer</i>
-              </div>
-              <div>Description</div>
-            </div>
-            <div className="side-info">
-              <div>May 2020 – Sep. 2022</div>
-              <div>Brooklyn, NY</div>
-            </div>
-          </div>
+          <button
+            type="button"
+            name="experience"
+            onClick={toggleForm}
+            className={isFormOpen ? "hide" : ""}
+          >
+            Add Experience
+          </button>
 
-          <button type="button">Add Experience</button>
-
-          <form className="hide" onSubmit={(e) => e.preventDefault()}>
+          <form
+            name="experience"
+            className={isFormOpen ? "" : "hide"}
+            onSubmit={(e) => {
+              e.preventDefault();
+              toggleForm(e);
+            }}
+          >
             <label htmlFor="experience-location">
               Location
               <input id="experience-location" placeholder="Mountain View, CA" />
@@ -69,3 +70,8 @@ export default class Experience extends Component {
     );
   }
 }
+
+Experience.propTypes = {
+  isFormOpen: PropTypes.bool.isRequired,
+  toggleForm: PropTypes.func.isRequired,
+};

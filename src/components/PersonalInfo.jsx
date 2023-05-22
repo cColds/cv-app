@@ -39,7 +39,8 @@ export default class PersonalInfo extends Component {
             name="personalInfo"
             className={isFormOpen ? "" : "hide"}
             onSubmit={(e) => {
-              setPersonalInfoItem(e);
+              e.preventDefault();
+              setPersonalInfoItem();
               toggleForm(e);
             }}
           >
