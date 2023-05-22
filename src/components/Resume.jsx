@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import uniqid from "uniqid";
 import { Component } from "react";
 import PersonalInfo from "./PersonalInfo";
 import Experience from "./Experience";
@@ -14,6 +16,29 @@ export default class Resume extends Component {
         item: { fullName: "", jobTitle: "", phone: "", email: "" },
         form: { fullName: "", jobTitle: "", phone: "", email: "" },
       },
+      experience: {
+        items: [
+          {
+            item: {
+              company: "",
+              jobTitle: "",
+              description: "",
+              startDate: "",
+              endDate: "",
+              location: "",
+            },
+            form: {
+              company: "",
+              jobTitle: "",
+              description: "",
+              startDate: "",
+              endDate: "",
+              location: "",
+            },
+            id: uniqid(),
+          },
+        ],
+      },
 
       displayForm: { personalInfo: false, experience: false },
     };
@@ -22,6 +47,8 @@ export default class Resume extends Component {
     this.setPersonalInfoItem = this.setPersonalInfoItem.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
   }
+
+  setExperienceForm(e) {}
 
   setPersonalInfoForm(e) {
     const { personalInfo } = this.state;
