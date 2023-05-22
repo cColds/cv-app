@@ -112,14 +112,6 @@ PersonalInfo.propTypes = {
   setPersonalInfoForm: PropTypes.func,
   setPersonalInfoItem: PropTypes.func,
   toggleForm: PropTypes.func,
-  personalInfo: PropTypes.shape({
-    item: PropTypes.shape({
-      fullName: PropTypes.string,
-      jobTitle: PropTypes.string,
-      phone: PropTypes.string,
-      email: PropTypes.string,
-      address: PropTypes.string,
-    }),
-  }),
+  personalInfo: PropTypes.shape({ item: PropTypes.objectOf(PropTypes.string) }),
   isFormOpen: PropTypes.bool,
 };
