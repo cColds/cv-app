@@ -100,18 +100,11 @@ export default class PersonalInfo extends Component {
   }
 }
 
-PersonalInfo.defaultProps = {
-  setPersonalInfoForm: () => {},
-  setPersonalInfoItem: () => {},
-  toggleForm: () => {},
-  personalInfo: {},
-  isFormOpen: PropTypes.bool,
-};
-
 PersonalInfo.propTypes = {
-  setPersonalInfoForm: PropTypes.func,
-  setPersonalInfoItem: PropTypes.func,
-  toggleForm: PropTypes.func,
-  personalInfo: PropTypes.shape({ item: PropTypes.objectOf(PropTypes.string) }),
-  isFormOpen: PropTypes.bool,
+  setPersonalInfoForm: PropTypes.func.isRequired,
+  setPersonalInfoItem: PropTypes.func.isRequired,
+  toggleForm: PropTypes.func.isRequired,
+  personalInfo: PropTypes.shape({ item: PropTypes.objectOf(PropTypes.string) })
+    .isRequired,
+  isFormOpen: PropTypes.bool.isRequired,
 };
