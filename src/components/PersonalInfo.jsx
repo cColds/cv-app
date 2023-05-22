@@ -25,6 +25,7 @@ export default class PersonalInfo extends Component {
             <div className="contact">
               <h3>Phone</h3>
               <h3>Email</h3>
+              <h3>Address</h3>
             </div>
           </div>
 
