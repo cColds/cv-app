@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-// import uniqid from "uniqid";
+import uniqid from "uniqid";
 import { Component } from "react";
 import PersonalInfo from "./PersonalInfo";
 import Experience from "./Experience";
@@ -87,6 +87,7 @@ export default class Resume extends Component {
         items: experience.items.concat({
           item: { ...experience.addForm },
           form: { ...experience.addForm },
+          id: uniqid(),
         }),
         addForm: {
           company: "",

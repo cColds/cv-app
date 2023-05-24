@@ -17,21 +17,27 @@ export default class Experience extends Component {
       <section className="experience section">
         <h2 className="heading">Experience</h2>
         <div className="content-container">
-          <div className={`item ${isFormOpen ? "hide" : ""}`}>
-            <div className="main-info">
-              <h3>
-                <strong>Google</strong>
-              </h3>
-              <div>
-                <i>Software Engineer</i>
-              </div>
-              <div>Description</div>
-            </div>
-            <div className="side-info">
-              <div>May 2020 – Sep. 2022</div>
-              <div>Brooklyn, NY</div>
-            </div>
-          </div>
+          <ul>
+            {experience.items.map(({ item, id }) => (
+              <li key={id} className={`item ${isFormOpen ? "hide" : ""}`}>
+                <div className="main-info">
+                  <h3>
+                    <strong>{item.company}</strong>
+                  </h3>
+                  <div>
+                    <i>{item.jobTitle}</i>
+                  </div>
+                  <div>{item.description}</div>
+                </div>
+                <div className="side-info">
+                  <div>
+                    {item.startDate} {item.endDate}
+                  </div>
+                  <div>{item.location}</div>
+                </div>
+              </li>
+            ))}
+          </ul>
 
           <button
             type="button"
