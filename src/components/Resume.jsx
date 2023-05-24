@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import uniqid from "uniqid";
+// import uniqid from "uniqid";
 import { Component } from "react";
 import PersonalInfo from "./PersonalInfo";
 import Experience from "./Experience";
@@ -17,27 +17,15 @@ export default class Resume extends Component {
         form: { fullName: "", jobTitle: "", phone: "", email: "" },
       },
       experience: {
-        items: [
-          {
-            item: {
-              company: "",
-              jobTitle: "",
-              description: "",
-              startDate: "",
-              endDate: "",
-              location: "",
-            },
-            form: {
-              company: "",
-              jobTitle: "",
-              description: "",
-              startDate: "",
-              endDate: "",
-              location: "",
-            },
-            id: uniqid(),
-          },
-        ],
+        items: [],
+        addForm: {
+          company: "",
+          jobTitle: "",
+          description: "",
+          startDate: "",
+          endDate: "",
+          location: "",
+        },
       },
 
       displayForm: { personalInfo: false, experience: false },
@@ -45,10 +33,10 @@ export default class Resume extends Component {
 
     this.setPersonalInfoForm = this.setPersonalInfoForm.bind(this);
     this.setPersonalInfoItem = this.setPersonalInfoItem.bind(this);
+    this.addExperience = this.addExperience.bind(this);
+    this.setAddExperienceForm = this.setAddExperienceForm.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
   }
-
-  setExperienceForm(e) {}
 
   setPersonalInfoForm(e) {
     const { personalInfo } = this.state;
@@ -81,6 +69,32 @@ export default class Resume extends Component {
     });
   }
 
+  setAddExperienceForm(e) {
+    const { experience } = this.state;
+
+    this.setState({
+      experience: {
+        ...experience,
+        addForm: { ...experience.addForm, [e.target.name]: e.target.value },
+      },
+    });
+  }
+
+  addExperience() {
+    // TODO: update experience obj to support addForm and proper objs
+    // TODO: set the concat item to the addForm state
+    // TODO: clear addForm values to default after adding/submitting
+    const { experience } = this.state;
+    this.setState({
+      experience: {
+        items: experience.items.concat({
+          item: { ...experience.addForm },
+          form: { ...experience.addForm },
+        }),
+      },
+    });
+  }
+
   toggleForm(e) {
     const { displayForm } = this.state;
     const isFormOpen = displayForm[e.currentTarget.name];
@@ -104,6 +118,8 @@ export default class Resume extends Component {
         <Experience
           isFormOpen={displayForm.experience}
           toggleForm={this.toggleForm}
+          addExperience={this.addExperience}
+          setAddExperienceForm={this.setAddExperienceForm}
         />
         <Education />
         <Projects />
