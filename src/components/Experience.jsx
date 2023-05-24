@@ -3,8 +3,15 @@ import PropTypes from "prop-types";
 
 export default class Experience extends Component {
   render() {
-    const { isFormOpen, toggleForm, addExperience, setAddExperienceForm } =
-      this.props;
+    const {
+      isFormOpen,
+      toggleForm,
+      addExperience,
+      setAddExperienceForm,
+      experience,
+    } = this.props;
+    const { company, jobTitle, location, startDate, endDate, description } =
+      experience.addForm;
 
     return (
       <section className="experience section">
@@ -50,16 +57,18 @@ export default class Experience extends Component {
                 id="experience-company"
                 placeholder="Google"
                 name="company"
+                value={company}
                 onChange={setAddExperienceForm}
               />
             </label>
 
             <label htmlFor="experience-job-title">
-              Job TItle
+              Job Title
               <input
                 id="experience-job-title"
                 placeholder="Software Engineer"
                 name="jobTitle"
+                value={jobTitle}
                 onChange={setAddExperienceForm}
               />
             </label>
@@ -70,6 +79,7 @@ export default class Experience extends Component {
                 id="experience-location"
                 placeholder="Mountain View, CA"
                 name="location"
+                value={location}
                 onChange={setAddExperienceForm}
               />
             </label>
@@ -80,6 +90,7 @@ export default class Experience extends Component {
                 id="experience-start-date"
                 placeholder="May 2020"
                 name="startDate"
+                value={startDate}
                 onChange={setAddExperienceForm}
               />
             </label>
@@ -89,6 +100,7 @@ export default class Experience extends Component {
                 id="experience-end-date"
                 placeholder="Sep. 2022"
                 name="endDate"
+                value={endDate}
                 onChange={setAddExperienceForm}
               />
             </label>
@@ -99,6 +111,7 @@ export default class Experience extends Component {
                 rows="10"
                 cols="30"
                 name="description"
+                value={description}
                 onChange={setAddExperienceForm}
               />
             </label>
@@ -116,4 +129,15 @@ Experience.propTypes = {
   toggleForm: PropTypes.func.isRequired,
   addExperience: PropTypes.func.isRequired,
   setAddExperienceForm: PropTypes.func.isRequired,
+  experience: PropTypes.shape({
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        fullName: PropTypes.string,
+        jobTitle: PropTypes.string,
+        phone: PropTypes.string,
+        email: PropTypes.string,
+      })
+    ),
+    addForm: PropTypes.objectOf(PropTypes.string),
+  }).isRequired,
 };

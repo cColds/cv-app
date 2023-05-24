@@ -81,9 +81,6 @@ export default class Resume extends Component {
   }
 
   addExperience() {
-    // TODO: update experience obj to support addForm and proper objs
-    // TODO: set the concat item to the addForm state
-    // TODO: clear addForm values to default after adding/submitting
     const { experience } = this.state;
     this.setState({
       experience: {
@@ -91,6 +88,14 @@ export default class Resume extends Component {
           item: { ...experience.addForm },
           form: { ...experience.addForm },
         }),
+        addForm: {
+          company: "",
+          jobTitle: "",
+          description: "",
+          startDate: "",
+          endDate: "",
+          location: "",
+        },
       },
     });
   }
@@ -104,7 +109,7 @@ export default class Resume extends Component {
   }
 
   render() {
-    const { personalInfo, displayForm } = this.state;
+    const { personalInfo, displayForm, experience } = this.state;
 
     return (
       <div className="resume">
@@ -120,6 +125,7 @@ export default class Resume extends Component {
           toggleForm={this.toggleForm}
           addExperience={this.addExperience}
           setAddExperienceForm={this.setAddExperienceForm}
+          experience={experience}
         />
         <Education />
         <Projects />
