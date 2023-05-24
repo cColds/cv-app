@@ -7,7 +7,7 @@ export default class Experience extends Component {
       isFormOpen,
       toggleForm,
       addExperience,
-      setAddExperienceForm,
+      setExperienceForm,
       experience,
     } = this.props;
     const { company, jobTitle, location, startDate, endDate, description } =
@@ -54,7 +54,7 @@ export default class Experience extends Component {
             onSubmit={(e) => {
               e.preventDefault();
               toggleForm(e);
-              addExperience();
+              addExperience(e);
             }}
           >
             <label htmlFor="experience-company">
@@ -62,9 +62,9 @@ export default class Experience extends Component {
               <input
                 id="experience-company"
                 placeholder="Google"
-                name="company"
+                name="company experience"
                 value={company}
-                onChange={setAddExperienceForm}
+                onChange={setExperienceForm}
               />
             </label>
 
@@ -73,9 +73,9 @@ export default class Experience extends Component {
               <input
                 id="experience-job-title"
                 placeholder="Software Engineer"
-                name="jobTitle"
+                name="jobTitle experience"
                 value={jobTitle}
-                onChange={setAddExperienceForm}
+                onChange={setExperienceForm}
               />
             </label>
 
@@ -84,9 +84,9 @@ export default class Experience extends Component {
               <input
                 id="experience-location"
                 placeholder="Mountain View, CA"
-                name="location"
+                name="location experience"
                 value={location}
-                onChange={setAddExperienceForm}
+                onChange={setExperienceForm}
               />
             </label>
 
@@ -95,9 +95,9 @@ export default class Experience extends Component {
               <input
                 id="experience-start-date"
                 placeholder="May 2020"
-                name="startDate"
+                name="startDate experience"
                 value={startDate}
-                onChange={setAddExperienceForm}
+                onChange={setExperienceForm}
               />
             </label>
             <label htmlFor="experience-end-date">
@@ -105,9 +105,9 @@ export default class Experience extends Component {
               <input
                 id="experience-end-date"
                 placeholder="Sep. 2022"
-                name="endDate"
+                name="endDate experience"
                 value={endDate}
-                onChange={setAddExperienceForm}
+                onChange={setExperienceForm}
               />
             </label>
             <label htmlFor="experience-description">
@@ -116,9 +116,9 @@ export default class Experience extends Component {
                 id="experience-description"
                 rows="10"
                 cols="30"
-                name="description"
+                name="description experience"
                 value={description}
-                onChange={setAddExperienceForm}
+                onChange={setExperienceForm}
               />
             </label>
 
@@ -134,7 +134,7 @@ Experience.propTypes = {
   isFormOpen: PropTypes.bool.isRequired,
   toggleForm: PropTypes.func.isRequired,
   addExperience: PropTypes.func.isRequired,
-  setAddExperienceForm: PropTypes.func.isRequired,
+  setExperienceForm: PropTypes.func.isRequired,
   experience: PropTypes.shape({
     items: PropTypes.arrayOf(
       PropTypes.shape({

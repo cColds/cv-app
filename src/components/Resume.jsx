@@ -33,8 +33,8 @@ export default class Resume extends Component {
 
     this.setPersonalInfoForm = this.setPersonalInfoForm.bind(this);
     this.setPersonalInfoItem = this.setPersonalInfoItem.bind(this);
-    this.addExperience = this.addExperience.bind(this);
-    this.setAddExperienceForm = this.setAddExperienceForm.bind(this);
+    this.addItem = this.addItem.bind(this);
+    this.setForm = this.setForm.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
   }
 
@@ -69,24 +69,28 @@ export default class Resume extends Component {
     });
   }
 
-  setAddExperienceForm(e) {
-    const { experience } = this.state;
-
+  setForm(e) {
+    const [inputKey, sectionKey] = e.target.name.split(" ");
+    const { state } = this;
+    const section = state[sectionKey];
     this.setState({
-      experience: {
-        ...experience,
-        addForm: { ...experience.addForm, [e.target.name]: e.target.value },
+      [sectionKey]: {
+        ...section,
+        addForm: { ...section.addForm, [inputKey]: e.target.value },
       },
     });
   }
 
-  addExperience() {
-    const { experience } = this.state;
+  addItem(e) {
+    const sectionKey = e.target.name;
+    const { state } = this;
+    const section = state[sectionKey];
+
     this.setState({
-      experience: {
-        items: experience.items.concat({
-          item: { ...experience.addForm },
-          form: { ...experience.addForm },
+      [sectionKey]: {
+        items: section.items.concat({
+          item: { ...section.addForm },
+          form: { ...section.addForm },
           id: uniqid(),
         }),
         addForm: {
@@ -124,8 +128,8 @@ export default class Resume extends Component {
         <Experience
           isFormOpen={displayForm.experience}
           toggleForm={this.toggleForm}
-          addExperience={this.addExperience}
-          setAddExperienceForm={this.setAddExperienceForm}
+          addExperience={this.addItem}
+          setExperienceForm={this.setForm}
           experience={experience}
         />
         <Education />
