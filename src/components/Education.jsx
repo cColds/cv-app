@@ -1,12 +1,15 @@
 import { Component } from "react";
+import PropTypes from "prop-types";
 
 export default class Education extends Component {
   render() {
+    const { toggleForm, isFormOpen } = this.props;
+
     return (
       <section className="education section">
         <h2 className="heading">Education</h2>
         <div className="content-container">
-          <div className="item">
+          <div className={`item ${isFormOpen ? "hide" : ""}`}>
             <div className="main-info">
               <h3>
                 <strong>Stanford University</strong>
@@ -22,9 +25,23 @@ export default class Education extends Component {
             </div>
           </div>
 
-          <button type="button">Add Education</button>
+          <button
+            type="button"
+            name="education"
+            onClick={toggleForm}
+            className={isFormOpen ? "hide" : ""}
+          >
+            Add Education
+          </button>
 
-          <form className="hide" onSubmit={(e) => e.preventDefault()}>
+          <form
+            name="education"
+            className={isFormOpen ? "" : "hide"}
+            onSubmit={(e) => {
+              e.preventDefault();
+              toggleForm(e);
+            }}
+          >
             <label htmlFor="school">
               School
               <input id="school" placeholder="Stanford University" />
@@ -55,3 +72,8 @@ export default class Education extends Component {
     );
   }
 }
+
+Education.propTypes = {
+  toggleForm: PropTypes.func.isRequired,
+  isFormOpen: PropTypes.bool.isRequired,
+};
