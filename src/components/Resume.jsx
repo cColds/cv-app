@@ -28,6 +28,18 @@ export default class Resume extends Component {
         },
       },
 
+      education: {
+        items: [],
+        addForm: {
+          school: "",
+          degree: "",
+          startDate: "",
+          endDate: "",
+          location: "",
+          description: "",
+        },
+      },
+
       displayForm: { personalInfo: false, experience: false, education: false },
     };
 
