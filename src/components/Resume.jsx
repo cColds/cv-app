@@ -131,7 +131,7 @@ export default class Resume extends Component {
   }
 
   render() {
-    const { personalInfo, displayForm, experience } = this.state;
+    const { personalInfo, displayForm, experience, education } = this.state;
 
     return (
       <div className="resume">
@@ -154,6 +154,7 @@ export default class Resume extends Component {
           toggleForm={this.toggleForm}
           setEducationForm={this.setForm}
           addEducation={this.addItem}
+          education={education}
         />
         <Projects />
         <Skills />
