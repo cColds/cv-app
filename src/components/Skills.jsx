@@ -10,13 +10,15 @@ export default class Skills extends Component {
       <section className="skills section">
         <h2 className="heading">Skills</h2>
         <div className="content-container">
-          <div className="item">
-            <div className="main-info">
-              <h3>
-                <strong>Frameworks:</strong> React, Angular, and NextJS
-              </h3>
-            </div>
-          </div>
+          <ul>
+            {skills.items.map(({ item, id }) => (
+              <li key={id} className={`item ${isFormOpen ? "hide" : ""}`}>
+                <div className="main-info">
+                  <div>{item.skill}</div>
+                </div>
+              </li>
+            ))}
+          </ul>
 
           <button
             type="button"
