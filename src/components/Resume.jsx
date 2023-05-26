@@ -174,6 +174,7 @@ export default class Resume extends Component {
         <Projects
           isFormOpen={displayForm.projects}
           toggleForm={this.toggleForm}
+          setForm={this.setForm}
         />
         <Skills />
       </div>

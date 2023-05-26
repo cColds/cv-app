@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export default class Projects extends Component {
   render() {
-    const { isFormOpen, toggleForm } = this.props;
+    const { isFormOpen, toggleForm, setForm } = this.props;
 
     return (
       <section className="projects section">
@@ -43,26 +43,49 @@ export default class Projects extends Component {
           >
             <label htmlFor="projects-name">
               Project Name
-              <input id="projects-name" placeholder="Tic Tac Toe" />
+              <input
+                id="projects-name"
+                placeholder="Tic Tac Toe"
+                name="project projects"
+                onChange={setForm}
+              />
             </label>
             <label htmlFor="projects-technologies">
               Technologies
               <input
                 id="projects-technologies"
                 placeholder="Git, React, MongoDB"
+                name="technologies projects"
+                onChange={setForm}
               />
             </label>
             <label htmlFor="projects-start-date">
               Start Date
-              <input id="projects-start-date" placeholder="May 2020" />
+              <input
+                id="projects-start-date"
+                placeholder="May 2020"
+                name="startDate projects"
+                onChange={setForm}
+              />
             </label>
             <label htmlFor="projects-end-date">
               End Date
-              <input id="projects-end-date" placeholder="Sep. 2022" />
+              <input
+                id="projects-end-date"
+                placeholder="Sep. 2022"
+                name="endDate projects"
+                onChange={setForm}
+              />
             </label>
             <label htmlFor="projects-description">
               Description
-              <textarea id="projects-description" rows="10" cols="30" />
+              <textarea
+                id="projects-description"
+                rows="10"
+                cols="30"
+                name="description projects"
+                onChange={setForm}
+              />
             </label>
             <button type="submit">Save</button>
           </form>
@@ -75,4 +98,5 @@ export default class Projects extends Component {
 Projects.propTypes = {
   isFormOpen: PropTypes.bool.isRequired,
   toggleForm: PropTypes.func.isRequired,
+  setForm: PropTypes.func.isRequired,
 };
