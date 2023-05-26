@@ -17,21 +17,27 @@ export default class Education extends Component {
       <section className="education section">
         <h2 className="heading">Education</h2>
         <div className="content-container">
-          <div className={`item ${isFormOpen ? "hide" : ""}`}>
-            <div className="main-info">
-              <h3>
-                <strong>Stanford University</strong>
-              </h3>
-              <div>
-                <i>Bachelor of Arts in Computer Science</i>
-              </div>
-              <div>Description</div>
-            </div>
-            <div className="side-info">
-              <div>May 2020 – Sep. 2022</div>
-              <div>Brooklyn, NY</div>
-            </div>
-          </div>
+          <ul>
+            {education.items.map(({ item, id }) => (
+              <li key={id} className={`item ${isFormOpen ? "hide" : ""}`}>
+                <div className="main-info">
+                  <h3>
+                    <strong>{item.school}</strong>
+                  </h3>
+                  <div>
+                    <i>{item.degree}</i>
+                  </div>
+                  <div>{item.description}</div>
+                </div>
+                <div className="side-info">
+                  <div>
+                    {item.startDate} {item.endDate}
+                  </div>
+                  <div>{item.location}</div>
+                </div>
+              </li>
+            ))}
+          </ul>
 
           <button
             type="button"
