@@ -50,6 +50,13 @@ export default class Resume extends Component {
         },
       },
 
+      skills: {
+        items: [],
+        addForm: {
+          skill: "",
+        },
+      },
+
       displayForm: {
         personalInfo: false,
         experience: false,
@@ -180,7 +187,11 @@ export default class Resume extends Component {
           projects={projects}
           addItem={this.addItem}
         />
-        <Skills isFormOpen={displayForm.skills} toggleForm={this.toggleForm} />
+        <Skills
+          isFormOpen={displayForm.skills}
+          toggleForm={this.toggleForm}
+          setForm={this.setForm}
+        />
       </div>
     );
   }

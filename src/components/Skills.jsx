@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export default class Skills extends Component {
   render() {
-    const { isFormOpen, toggleForm } = this.props;
+    const { isFormOpen, toggleForm, setForm } = this.props;
 
     return (
       <section className="skills section">
@@ -38,10 +38,12 @@ export default class Skills extends Component {
             }}
           >
             <label htmlFor="skills-technologies">
-              Technologies
+              Skill
               <input
                 id="skills-technologies"
                 placeholder="Git, React, and MongoDB"
+                name="skill skills"
+                onChange={setForm}
               />
             </label>
             <button type="submit">Save</button>
@@ -55,4 +57,5 @@ export default class Skills extends Component {
 Skills.propTypes = {
   isFormOpen: PropTypes.bool.isRequired,
   toggleForm: PropTypes.func.isRequired,
+  setForm: PropTypes.func.isRequired,
 };
