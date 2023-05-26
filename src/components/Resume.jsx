@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import uniqid from "uniqid";
 import { Component } from "react";
 import PersonalInfo from "./PersonalInfo";
@@ -145,15 +144,15 @@ export default class Resume extends Component {
         <Experience
           isFormOpen={displayForm.experience}
           toggleForm={this.toggleForm}
-          addExperience={this.addItem}
-          setExperienceForm={this.setForm}
+          addItem={this.addItem}
+          setForm={this.setForm}
           experience={experience}
         />
         <Education
           isFormOpen={displayForm.education}
           toggleForm={this.toggleForm}
-          setEducationForm={this.setForm}
-          addEducation={this.addItem}
+          setForm={this.setForm}
+          addItem={this.addItem}
           education={education}
         />
         <Projects />
