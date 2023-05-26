@@ -93,10 +93,20 @@ export default class Resume extends Component {
     });
   }
 
+  static getResetFormValues(objects) {
+    const copy = { ...objects };
+    Object.keys(copy).forEach((key) => {
+      copy[key] = "";
+    });
+
+    return copy;
+  }
+
   addItem(e) {
     const sectionKey = e.target.name;
     const { state } = this;
     const section = state[sectionKey];
+    const resetFormValues = Resume.getResetFormValues(section.addForm);
 
     this.setState({
       [sectionKey]: {
@@ -106,12 +116,7 @@ export default class Resume extends Component {
           id: uniqid(),
         }),
         addForm: {
-          company: "",
-          jobTitle: "",
-          description: "",
-          startDate: "",
-          endDate: "",
-          location: "",
+          ...resetFormValues,
         },
       },
     });
