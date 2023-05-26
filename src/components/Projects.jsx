@@ -11,20 +11,27 @@ export default class Projects extends Component {
       <section className="projects section">
         <h2 className="heading">Projects</h2>
         <div className="content-container">
-          <div className="item">
-            <div className="main-info">
-              <h3>
-                <strong>Tic Tac Toe</strong> |
-                <span>
-                  <i> Git, React, MongoDB, NodeJS, and Express</i>
-                </span>
-              </h3>
-              <div>Description</div>
-            </div>
-            <div className="side-info">
-              <div>May 2020 – Sep. 2022</div>
-            </div>
-          </div>
+          <ul>
+            {projects.items.map(({ item, id }) => (
+              <li key={id} className={`item ${isFormOpen ? "hide" : ""}`}>
+                <div className="main-info">
+                  <h3>
+                    <strong>{item.project}</strong>
+                  </h3>
+                  <div>
+                    <i>{item.technologies}</i>
+                  </div>
+                  <div>{item.description}</div>
+                </div>
+                <div className="side-info">
+                  <div>
+                    {item.startDate} {item.endDate}
+                  </div>
+                  <div>{item.location}</div>
+                </div>
+              </li>
+            ))}
+          </ul>
 
           <button
             type="button"
@@ -108,6 +115,15 @@ Projects.propTypes = {
   toggleForm: PropTypes.func.isRequired,
   setForm: PropTypes.func.isRequired,
   projects: PropTypes.shape({
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        project: PropTypes.string,
+        technologies: PropTypes.string,
+        startDate: PropTypes.string,
+        endDate: PropTypes.string,
+        description: PropTypes.string,
+      })
+    ),
     addForm: PropTypes.objectOf(PropTypes.string),
   }).isRequired,
   addItem: PropTypes.func.isRequired,
