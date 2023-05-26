@@ -39,7 +39,23 @@ export default class Resume extends Component {
         },
       },
 
-      displayForm: { personalInfo: false, experience: false, education: false },
+      projects: {
+        items: [],
+        addForm: {
+          project: "",
+          technologies: "",
+          startDate: "",
+          endDate: "",
+          description: "",
+        },
+      },
+
+      displayForm: {
+        personalInfo: false,
+        experience: false,
+        education: false,
+        projects: false,
+      },
     };
 
     this.setPersonalInfoForm = this.setPersonalInfoForm.bind(this);
@@ -155,7 +171,10 @@ export default class Resume extends Component {
           addItem={this.addItem}
           education={education}
         />
-        <Projects />
+        <Projects
+          isFormOpen={displayForm.projects}
+          toggleForm={this.toggleForm}
+        />
         <Skills />
       </div>
     );

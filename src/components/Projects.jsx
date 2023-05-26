@@ -1,7 +1,10 @@
 import { Component } from "react";
+import PropTypes from "prop-types";
 
 export default class Projects extends Component {
   render() {
+    const { isFormOpen, toggleForm } = this.props;
+
     return (
       <section className="projects section">
         <h2 className="heading">Projects</h2>
@@ -21,9 +24,23 @@ export default class Projects extends Component {
             </div>
           </div>
 
-          <button type="button">Add Projects</button>
+          <button
+            type="button"
+            name="projects"
+            onClick={toggleForm}
+            className={isFormOpen ? "hide" : ""}
+          >
+            Add Projects
+          </button>
 
-          <form className="hide" onSubmit={(e) => e.preventDefault()}>
+          <form
+            name="projects"
+            className={isFormOpen ? "" : "hide"}
+            onSubmit={(e) => {
+              e.preventDefault();
+              toggleForm(e);
+            }}
+          >
             <label htmlFor="projects-name">
               Project Name
               <input id="projects-name" placeholder="Tic Tac Toe" />
@@ -54,3 +71,8 @@ export default class Projects extends Component {
     );
   }
 }
+
+Projects.propTypes = {
+  isFormOpen: PropTypes.bool.isRequired,
+  toggleForm: PropTypes.func.isRequired,
+};
