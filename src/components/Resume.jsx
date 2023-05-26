@@ -152,6 +152,7 @@ export default class Resume extends Component {
         <Education
           isFormOpen={displayForm.education}
           toggleForm={this.toggleForm}
+          setEducationForm={this.setForm}
         />
         <Projects />
         <Skills />
