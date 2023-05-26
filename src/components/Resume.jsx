@@ -55,6 +55,7 @@ export default class Resume extends Component {
         experience: false,
         education: false,
         projects: false,
+        skills: false,
       },
     };
 
@@ -179,7 +180,7 @@ export default class Resume extends Component {
           projects={projects}
           addItem={this.addItem}
         />
-        <Skills />
+        <Skills isFormOpen={displayForm.skills} toggleForm={this.toggleForm} />
       </div>
     );
   }

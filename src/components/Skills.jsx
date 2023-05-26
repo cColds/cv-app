@@ -1,7 +1,10 @@
 import { Component } from "react";
+import PropTypes from "prop-types";
 
 export default class Skills extends Component {
   render() {
+    const { isFormOpen, toggleForm } = this.props;
+
     return (
       <section className="skills section">
         <h2 className="heading">Skills</h2>
@@ -14,9 +17,26 @@ export default class Skills extends Component {
             </div>
           </div>
 
-          <button type="button">Add Skills</button>
+          <button
+            type="button"
+            name="skills"
+            className={isFormOpen ? "hide" : ""}
+            onClick={(e) => {
+              e.preventDefault();
+              toggleForm(e);
+            }}
+          >
+            Add Skills
+          </button>
 
-          <form className="hide" onSubmit={(e) => e.preventDefault()}>
+          <form
+            name="skills"
+            className={isFormOpen ? "" : "hide"}
+            onSubmit={(e) => {
+              e.preventDefault();
+              toggleForm(e);
+            }}
+          >
             <label htmlFor="skills-technologies">
               Technologies
               <input
@@ -31,3 +51,8 @@ export default class Skills extends Component {
     );
   }
 }
+
+Skills.propTypes = {
+  isFormOpen: PropTypes.bool.isRequired,
+  toggleForm: PropTypes.func.isRequired,
+};
