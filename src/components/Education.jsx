@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 
 export default class Education extends Component {
   render() {
-    const { toggleForm, isFormOpen, setEducationForm } = this.props;
+    const { toggleForm, isFormOpen, setEducationForm, addEducation } =
+      this.props;
 
     return (
       <section className="education section">
@@ -40,6 +41,7 @@ export default class Education extends Component {
             onSubmit={(e) => {
               e.preventDefault();
               toggleForm(e);
+              addEducation(e);
             }}
           >
             <label htmlFor="school">
@@ -100,4 +102,5 @@ Education.propTypes = {
   toggleForm: PropTypes.func.isRequired,
   isFormOpen: PropTypes.bool.isRequired,
   setEducationForm: PropTypes.func.isRequired,
+  addEducation: PropTypes.func.isRequired,
 };
