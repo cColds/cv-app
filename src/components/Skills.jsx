@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export default class Skills extends Component {
   render() {
-    const { isFormOpen, toggleForm, setForm, skills, addItem } = this.props;
+    const { isFormOpen, toggleForm, setAddForm, skills, addItem } = this.props;
     const { skill } = skills.addForm;
 
     return (
@@ -47,7 +47,7 @@ export default class Skills extends Component {
                 id="skills-technologies"
                 placeholder="Git, React, and MongoDB"
                 name="skill skills"
-                onChange={setForm}
+                onChange={setAddForm}
                 value={skill}
               />
             </label>
@@ -62,7 +62,7 @@ export default class Skills extends Component {
 Skills.propTypes = {
   isFormOpen: PropTypes.bool.isRequired,
   toggleForm: PropTypes.func.isRequired,
-  setForm: PropTypes.func.isRequired,
+  setAddForm: PropTypes.func.isRequired,
   skills: PropTypes.shape({
     items: PropTypes.arrayOf(
       PropTypes.shape({

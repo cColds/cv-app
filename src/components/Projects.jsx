@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 
 export default class Projects extends Component {
   render() {
-    const { isFormOpen, toggleForm, setForm, projects, addItem } = this.props;
+    const { isFormOpen, toggleForm, setAddForm, projects, addItem } =
+      this.props;
     const { project, technologies, description, startDate, endDate } =
       projects.addForm;
 
@@ -57,7 +58,7 @@ export default class Projects extends Component {
                 id="projects-name"
                 placeholder="Tic Tac Toe"
                 name="project projects"
-                onChange={setForm}
+                onChange={setAddForm}
                 value={project}
               />
             </label>
@@ -67,7 +68,7 @@ export default class Projects extends Component {
                 id="projects-technologies"
                 placeholder="Git, React, MongoDB"
                 name="technologies projects"
-                onChange={setForm}
+                onChange={setAddForm}
                 value={technologies}
               />
             </label>
@@ -77,7 +78,7 @@ export default class Projects extends Component {
                 id="projects-start-date"
                 placeholder="May 2020"
                 name="startDate projects"
-                onChange={setForm}
+                onChange={setAddForm}
                 value={startDate}
               />
             </label>
@@ -87,7 +88,7 @@ export default class Projects extends Component {
                 id="projects-end-date"
                 placeholder="Sep. 2022"
                 name="endDate projects"
-                onChange={setForm}
+                onChange={setAddForm}
                 value={endDate}
               />
             </label>
@@ -98,7 +99,7 @@ export default class Projects extends Component {
                 rows="10"
                 cols="30"
                 name="description projects"
-                onChange={setForm}
+                onChange={setAddForm}
                 value={description}
               />
             </label>
@@ -113,7 +114,7 @@ export default class Projects extends Component {
 Projects.propTypes = {
   isFormOpen: PropTypes.bool.isRequired,
   toggleForm: PropTypes.func.isRequired,
-  setForm: PropTypes.func.isRequired,
+  setAddForm: PropTypes.func.isRequired,
   projects: PropTypes.shape({
     items: PropTypes.arrayOf(
       PropTypes.shape({

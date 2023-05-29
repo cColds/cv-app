@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 
 export default class Education extends Component {
   render() {
-    const { toggleForm, isFormOpen, setForm, addItem, education } = this.props;
+    const { toggleForm, isFormOpen, setAddForm, addItem, education } =
+      this.props;
     const { school, degree, startDate, endDate, location, description } =
       education.addForm;
 
@@ -58,7 +59,7 @@ export default class Education extends Component {
                 name="school education"
                 placeholder="Stanford University"
                 value={school}
-                onChange={setForm}
+                onChange={setAddForm}
               />
             </label>
             <label htmlFor="degree">
@@ -68,7 +69,7 @@ export default class Education extends Component {
                 name="degree education"
                 placeholder="Bachelor of Arts in Computer Science"
                 value={degree}
-                onChange={setForm}
+                onChange={setAddForm}
               />
             </label>
 
@@ -79,7 +80,7 @@ export default class Education extends Component {
                 name="location education"
                 placeholder="Brooklyn, NY"
                 value={location}
-                onChange={setForm}
+                onChange={setAddForm}
               />
             </label>
 
@@ -90,7 +91,7 @@ export default class Education extends Component {
                 name="startDate education"
                 placeholder="May 2020"
                 value={startDate}
-                onChange={setForm}
+                onChange={setAddForm}
               />
             </label>
             <label htmlFor="education-end-date">
@@ -100,7 +101,7 @@ export default class Education extends Component {
                 name="endDate education"
                 placeholder="Sep. 2022"
                 value={endDate}
-                onChange={setForm}
+                onChange={setAddForm}
               />
             </label>
             <label htmlFor="education-description">
@@ -111,7 +112,7 @@ export default class Education extends Component {
                 rows="10"
                 cols="30"
                 value={description}
-                onChange={setForm}
+                onChange={setAddForm}
               />
             </label>
             <button type="submit">Save</button>
@@ -125,7 +126,7 @@ export default class Education extends Component {
 Education.propTypes = {
   toggleForm: PropTypes.func.isRequired,
   isFormOpen: PropTypes.bool.isRequired,
-  setForm: PropTypes.func.isRequired,
+  setAddForm: PropTypes.func.isRequired,
   addItem: PropTypes.func.isRequired,
   education: PropTypes.shape({
     items: PropTypes.arrayOf(

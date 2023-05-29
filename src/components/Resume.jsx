@@ -25,6 +25,16 @@ export default class Resume extends Component {
           endDate: "",
           location: "",
         },
+        editForm: {
+          company: "",
+          jobTitle: "",
+          description: "",
+          startDate: "",
+          endDate: "",
+          location: "",
+        },
+        edit: false,
+        editId: "",
       },
 
       education: {
@@ -69,8 +79,11 @@ export default class Resume extends Component {
     this.setPersonalInfoForm = this.setPersonalInfoForm.bind(this);
     this.setPersonalInfoItem = this.setPersonalInfoItem.bind(this);
     this.addItem = this.addItem.bind(this);
-    this.setForm = this.setForm.bind(this);
+    this.setAddForm = this.setAddForm.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
+    this.setEditState = this.setEditState.bind(this);
+    this.setEditChanges = this.setEditChanges.bind(this);
+    this.setSaveEditItem = this.setSaveEditItem.bind(this);
   }
 
   setPersonalInfoForm(e) {
@@ -104,7 +117,7 @@ export default class Resume extends Component {
     });
   }
 
-  setForm(e) {
+  setAddForm(e) {
     const [inputKey, sectionKey] = e.target.name.split(" ");
     const { state } = this;
     const section = state[sectionKey];
@@ -114,6 +127,54 @@ export default class Resume extends Component {
         addForm: { ...section.addForm, [inputKey]: e.target.value },
       },
     });
+  }
+
+  setEditState(e, item, id = "") {
+    const { sectionKey } = e.currentTarget.dataset;
+    this.setState((prevState) => {
+      const section = prevState[sectionKey];
+      const editedItems = structuredClone({
+        ...section,
+        edit: !section.edit,
+        editForm: { ...item },
+        editId: id,
+      });
+
+      return {
+        [sectionKey]: {
+          ...editedItems,
+        },
+      };
+    });
+  }
+
+  setEditChanges(e) {
+    const { inputKey, sectionKey } = e.currentTarget.dataset;
+    const { state } = this;
+    const section = state[sectionKey];
+
+    this.setState({
+      [sectionKey]: {
+        ...section,
+
+        editForm: { ...section.editForm, [inputKey]: e.target.value },
+      },
+    });
+  }
+
+  setSaveEditItem(e) {
+    const { sectionKey } = e.currentTarget.dataset;
+    const { state } = this;
+    const section = state[sectionKey];
+    const saveEditItem = section.items.map(({ item, form, id }) => {
+      if (section.editId === id) {
+        return { item: { ...section.editForm }, form: { ...form }, id };
+      }
+
+      return { item: { ...item }, form: { ...form }, id };
+    });
+
+    this.setState({ [sectionKey]: { ...section, items: saveEditItem } });
   }
 
   static getResetFormValues(objects) {
@@ -141,6 +202,12 @@ export default class Resume extends Component {
         addForm: {
           ...resetFormValues,
         },
+        editForm: {
+          ...section.editForm,
+        },
+
+        edit: false,
+        editId: "",
       },
     });
   }
@@ -176,27 +243,30 @@ export default class Resume extends Component {
           isFormOpen={displayForm.experience}
           toggleForm={this.toggleForm}
           addItem={this.addItem}
-          setForm={this.setForm}
+          setAddForm={this.setAddForm}
           experience={experience}
+          setEditState={this.setEditState}
+          setEditChanges={this.setEditChanges}
+          setSaveEditItem={this.setSaveEditItem}
         />
         <Education
           isFormOpen={displayForm.education}
           toggleForm={this.toggleForm}
-          setForm={this.setForm}
+          setAddForm={this.setAddForm}
           addItem={this.addItem}
           education={education}
         />
         <Projects
           isFormOpen={displayForm.projects}
           toggleForm={this.toggleForm}
-          setForm={this.setForm}
+          setAddForm={this.setAddForm}
           projects={projects}
           addItem={this.addItem}
         />
         <Skills
           isFormOpen={displayForm.skills}
           toggleForm={this.toggleForm}
-          setForm={this.setForm}
+          setAddForm={this.setAddForm}
           skills={skills}
           addItem={this.addItem}
         />
