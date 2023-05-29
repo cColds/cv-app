@@ -36,7 +36,7 @@ export default class Education extends Component {
 
           <button
             type="button"
-            name="education"
+            data-section-key="education"
             onClick={toggleForm}
             className={isFormOpen ? "hide" : ""}
           >
@@ -44,7 +44,7 @@ export default class Education extends Component {
           </button>
 
           <form
-            name="education"
+            data-section-key="education"
             className={isFormOpen ? "" : "hide"}
             onSubmit={(e) => {
               e.preventDefault();
@@ -56,7 +56,8 @@ export default class Education extends Component {
               School
               <input
                 id="school"
-                name="school education"
+                data-section-key="education"
+                data-input-key="school"
                 placeholder="Stanford University"
                 value={school}
                 onChange={setAddForm}
@@ -66,7 +67,8 @@ export default class Education extends Component {
               Degree
               <input
                 id="degree"
-                name="degree education"
+                data-section-key="education"
+                data-input-key="degree"
                 placeholder="Bachelor of Arts in Computer Science"
                 value={degree}
                 onChange={setAddForm}
@@ -77,7 +79,8 @@ export default class Education extends Component {
               Location
               <input
                 id="location"
-                name="location education"
+                data-section-key="education"
+                data-input-key="location"
                 placeholder="Brooklyn, NY"
                 value={location}
                 onChange={setAddForm}
@@ -88,7 +91,8 @@ export default class Education extends Component {
               Start Date
               <input
                 id="education-start-date"
-                name="startDate education"
+                data-section-key="education"
+                data-input-key="startDate"
                 placeholder="May 2020"
                 value={startDate}
                 onChange={setAddForm}
@@ -98,7 +102,8 @@ export default class Education extends Component {
               End Date
               <input
                 id="education-end-date"
-                name="endDate education"
+                data-section-key="education"
+                data-input-key="endDate"
                 placeholder="Sep. 2022"
                 value={endDate}
                 onChange={setAddForm}
@@ -108,7 +113,8 @@ export default class Education extends Component {
               Description
               <textarea
                 id="education-description"
-                name="description education"
+                data-section-key="education"
+                data-input-key="description"
                 rows="10"
                 cols="30"
                 value={description}

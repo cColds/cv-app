@@ -22,7 +22,7 @@ export default class Skills extends Component {
 
           <button
             type="button"
-            name="skills"
+            data-section-key="skills"
             className={isFormOpen ? "hide" : ""}
             onClick={(e) => {
               e.preventDefault();
@@ -33,7 +33,7 @@ export default class Skills extends Component {
           </button>
 
           <form
-            name="skills"
+            data-section-key="skills"
             className={isFormOpen ? "" : "hide"}
             onSubmit={(e) => {
               e.preventDefault();
@@ -46,7 +46,8 @@ export default class Skills extends Component {
               <input
                 id="skills-technologies"
                 placeholder="Git, React, and MongoDB"
-                name="skill skills"
+                data-section-key="skills"
+                data-input-key="skill"
                 onChange={setAddForm}
                 value={skill}
               />

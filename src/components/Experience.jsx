@@ -41,7 +41,6 @@ export default class Experience extends Component {
                 </div>
                 <button
                   type="button"
-                  name="experience"
                   data-section-key="experience"
                   onClick={(e) => {
                     setEditState(e, item, id);
@@ -58,7 +57,7 @@ export default class Experience extends Component {
 
           <button
             type="button"
-            name="experience"
+            data-section-key="experience"
             onClick={toggleForm}
             className={isFormOpen || edit ? "hide" : ""}
           >
@@ -66,7 +65,6 @@ export default class Experience extends Component {
           </button>
           {/* EDIT FORM  */}
           <form
-            name="experience"
             className={edit ? "" : "hide"}
             data-section-key="experience"
             onSubmit={(e) => {
@@ -90,7 +88,6 @@ export default class Experience extends Component {
                 data-input-key="company"
                 id="experience-company"
                 placeholder="Google"
-                name="company experience"
                 onChange={setEditChanges}
                 value={editForm.company}
               />
@@ -103,7 +100,6 @@ export default class Experience extends Component {
                 data-input-key="jobTitle"
                 id="experience-job-title"
                 placeholder="Software Engineer"
-                name="jobTitle experience"
                 onChange={setEditChanges}
                 value={editForm.jobTitle}
               />
@@ -116,7 +112,6 @@ export default class Experience extends Component {
                 data-input-key="location"
                 id="experience-location"
                 placeholder="Mountain View, CA"
-                name="location experience"
                 onChange={setEditChanges}
                 value={editForm.location}
               />
@@ -129,7 +124,6 @@ export default class Experience extends Component {
                 data-input-key="startDate"
                 id="experience-start-date"
                 placeholder="May 2020"
-                name="startDate experience"
                 onChange={setEditChanges}
                 value={editForm.startDate}
               />
@@ -141,7 +135,6 @@ export default class Experience extends Component {
                 data-input-key="endDate"
                 id="experience-end-date"
                 placeholder="Sep. 2022"
-                name="endDate experience"
                 onChange={setEditChanges}
                 value={editForm.endDate}
               />
@@ -154,7 +147,6 @@ export default class Experience extends Component {
                 id="experience-description"
                 rows="10"
                 cols="30"
-                name="description experience"
                 onChange={setEditChanges}
                 value={editForm.description}
               />
@@ -164,7 +156,7 @@ export default class Experience extends Component {
           </form>
           {/* ADD FORM */}
           <form
-            name="experience"
+            data-section-key="experience"
             className={isFormOpen ? "" : "hide"}
             onSubmit={(e) => {
               e.preventDefault();
@@ -177,7 +169,8 @@ export default class Experience extends Component {
               <input
                 id="experience-company"
                 placeholder="Google"
-                name="company experience"
+                data-section-key="experience"
+                data-input-key="company"
                 value={company}
                 onChange={setAddForm}
               />
@@ -188,7 +181,8 @@ export default class Experience extends Component {
               <input
                 id="experience-job-title"
                 placeholder="Software Engineer"
-                name="jobTitle experience"
+                data-section-key="experience"
+                data-input-key="jobTitle"
                 value={jobTitle}
                 onChange={setAddForm}
               />
@@ -199,7 +193,8 @@ export default class Experience extends Component {
               <input
                 id="experience-location"
                 placeholder="Mountain View, CA"
-                name="location experience"
+                data-section-key="experience"
+                data-input-key="location"
                 value={location}
                 onChange={setAddForm}
               />
@@ -210,7 +205,8 @@ export default class Experience extends Component {
               <input
                 id="experience-start-date"
                 placeholder="May 2020"
-                name="startDate experience"
+                data-section-key="experience"
+                data-input-key="startDate"
                 value={startDate}
                 onChange={setAddForm}
               />
@@ -220,7 +216,8 @@ export default class Experience extends Component {
               <input
                 id="experience-end-date"
                 placeholder="Sep. 2022"
-                name="endDate experience"
+                data-section-key="experience"
+                data-input-key="endDate"
                 value={endDate}
                 onChange={setAddForm}
               />
@@ -231,7 +228,8 @@ export default class Experience extends Component {
                 id="experience-description"
                 rows="10"
                 cols="30"
-                name="description experience"
+                data-section-key="experience"
+                data-input-key="description"
                 value={description}
                 onChange={setAddForm}
               />

@@ -80,9 +80,10 @@ export default class Resume extends Component {
   setPersonalInfoForm = (e) => {
     const { personalInfo } = this.state;
     const { form } = personalInfo;
+    const { inputKey } = e.target.dataset;
     const updateForm = {
       ...form,
-      [e.target.name]: e.target.value,
+      [inputKey]: e.target.value,
     };
 
     this.setState({
@@ -109,7 +110,7 @@ export default class Resume extends Component {
   };
 
   setAddForm = (e) => {
-    const [inputKey, sectionKey] = e.target.name.split(" ");
+    const { inputKey, sectionKey } = e.target.dataset;
     const { state } = this;
     const section = state[sectionKey];
     this.setState({
@@ -178,7 +179,7 @@ export default class Resume extends Component {
   };
 
   addItem = (e) => {
-    const sectionKey = e.target.name;
+    const { sectionKey } = e.target.dataset;
     const { state } = this;
     const section = state[sectionKey];
     const resetFormValues = Resume.getResetFormValues(section.addForm);
@@ -205,9 +206,10 @@ export default class Resume extends Component {
 
   toggleForm = (e) => {
     const { displayForm } = this.state;
-    const isFormOpen = displayForm[e.currentTarget.name];
+    const { sectionKey } = e.currentTarget.dataset;
+    const isFormOpen = displayForm[sectionKey];
     this.setState({
-      displayForm: { ...displayForm, [e.currentTarget.name]: !isFormOpen },
+      displayForm: { ...displayForm, [sectionKey]: !isFormOpen },
     });
   };
 

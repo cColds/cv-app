@@ -36,7 +36,7 @@ export default class Projects extends Component {
 
           <button
             type="button"
-            name="projects"
+            data-section-key="projects"
             onClick={toggleForm}
             className={isFormOpen ? "hide" : ""}
           >
@@ -44,7 +44,7 @@ export default class Projects extends Component {
           </button>
 
           <form
-            name="projects"
+            data-section-key="projects"
             className={isFormOpen ? "" : "hide"}
             onSubmit={(e) => {
               e.preventDefault();
@@ -57,7 +57,8 @@ export default class Projects extends Component {
               <input
                 id="projects-name"
                 placeholder="Tic Tac Toe"
-                name="project projects"
+                data-section-key="projects"
+                data-input-key="project"
                 onChange={setAddForm}
                 value={project}
               />
@@ -67,7 +68,8 @@ export default class Projects extends Component {
               <input
                 id="projects-technologies"
                 placeholder="Git, React, MongoDB"
-                name="technologies projects"
+                data-section-key="projects"
+                data-input-key="technologies"
                 onChange={setAddForm}
                 value={technologies}
               />
@@ -77,7 +79,8 @@ export default class Projects extends Component {
               <input
                 id="projects-start-date"
                 placeholder="May 2020"
-                name="startDate projects"
+                data-section-key="projects"
+                data-input-key="startDate"
                 onChange={setAddForm}
                 value={startDate}
               />
@@ -87,7 +90,8 @@ export default class Projects extends Component {
               <input
                 id="projects-end-date"
                 placeholder="Sep. 2022"
-                name="endDate projects"
+                data-section-key="projects"
+                data-input-key="endDate"
                 onChange={setAddForm}
                 value={endDate}
               />
@@ -98,7 +102,8 @@ export default class Projects extends Component {
                 id="projects-description"
                 rows="10"
                 cols="30"
-                name="description projects"
+                data-section-key="projects"
+                data-input-key="description"
                 onChange={setAddForm}
                 value={description}
               />
