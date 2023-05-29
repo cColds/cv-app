@@ -13,7 +13,7 @@ export default class Resume extends Component {
     this.state = {
       personalInfo: {
         item: { fullName: "", jobTitle: "", phone: "", email: "" },
-        form: { fullName: "", jobTitle: "", phone: "", email: "" },
+        editForm: { fullName: "", jobTitle: "", phone: "", email: "" },
       },
       experience: {
         items: [],
@@ -79,26 +79,26 @@ export default class Resume extends Component {
 
   setPersonalInfoForm = (e) => {
     const { personalInfo } = this.state;
-    const { form } = personalInfo;
+    const { editForm } = personalInfo;
     const { inputKey } = e.target.dataset;
     const updateForm = {
-      ...form,
+      ...editForm,
       [inputKey]: e.target.value,
     };
 
     this.setState({
       personalInfo: {
         ...personalInfo,
-        form: updateForm,
+        editForm: updateForm,
       },
     });
   };
 
   setPersonalInfoItem = () => {
     const { personalInfo } = this.state;
-    const { form } = personalInfo;
+    const { editForm } = personalInfo;
     const updateItem = {
-      ...form,
+      ...editForm,
     };
 
     this.setState({
@@ -158,12 +158,12 @@ export default class Resume extends Component {
     const { sectionKey } = e.currentTarget.dataset;
     const { state } = this;
     const section = state[sectionKey];
-    const saveEditItem = section.items.map(({ item, form, id }) => {
+    const saveEditItem = section.items.map(({ item, id }) => {
       if (section.editId === id) {
-        return { item: { ...section.editForm }, form: { ...form }, id };
+        return { item: { ...section.editForm }, id };
       }
 
-      return { item: { ...item }, form: { ...form }, id };
+      return { item: { ...item }, id };
     });
 
     this.setState({ [sectionKey]: { ...section, items: saveEditItem } });
@@ -188,7 +188,6 @@ export default class Resume extends Component {
       [sectionKey]: {
         items: section.items.concat({
           item: { ...section.addForm },
-          form: { ...section.addForm },
           id: uniqid(),
         }),
         addForm: {
