@@ -12,8 +12,14 @@ export default class Resume extends Component {
 
     this.state = {
       personalInfo: {
-        item: { fullName: "", jobTitle: "", phone: "", email: "" },
-        editForm: { fullName: "", jobTitle: "", phone: "", email: "" },
+        item: { fullName: "", jobTitle: "", phone: "", email: "", address: "" },
+        editForm: {
+          fullName: "",
+          jobTitle: "",
+          phone: "",
+          email: "",
+          address: "",
+        },
       },
       experience: {
         items: [],
