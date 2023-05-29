@@ -75,18 +75,9 @@ export default class Resume extends Component {
         skills: false,
       },
     };
-
-    this.setPersonalInfoForm = this.setPersonalInfoForm.bind(this);
-    this.setPersonalInfoItem = this.setPersonalInfoItem.bind(this);
-    this.addItem = this.addItem.bind(this);
-    this.setAddForm = this.setAddForm.bind(this);
-    this.toggleForm = this.toggleForm.bind(this);
-    this.setEditState = this.setEditState.bind(this);
-    this.setEditChanges = this.setEditChanges.bind(this);
-    this.setSaveEditItem = this.setSaveEditItem.bind(this);
   }
 
-  setPersonalInfoForm(e) {
+  setPersonalInfoForm = (e) => {
     const { personalInfo } = this.state;
     const { form } = personalInfo;
     const updateForm = {
@@ -100,9 +91,9 @@ export default class Resume extends Component {
         form: updateForm,
       },
     });
-  }
+  };
 
-  setPersonalInfoItem() {
+  setPersonalInfoItem = () => {
     const { personalInfo } = this.state;
     const { form } = personalInfo;
     const updateItem = {
@@ -115,9 +106,9 @@ export default class Resume extends Component {
         item: updateItem,
       },
     });
-  }
+  };
 
-  setAddForm(e) {
+  setAddForm = (e) => {
     const [inputKey, sectionKey] = e.target.name.split(" ");
     const { state } = this;
     const section = state[sectionKey];
@@ -127,9 +118,9 @@ export default class Resume extends Component {
         addForm: { ...section.addForm, [inputKey]: e.target.value },
       },
     });
-  }
+  };
 
-  setEditState(e, item, id = "") {
+  setEditState = (e, item, id = "") => {
     const { sectionKey } = e.currentTarget.dataset;
     this.setState((prevState) => {
       const section = prevState[sectionKey];
@@ -146,9 +137,9 @@ export default class Resume extends Component {
         },
       };
     });
-  }
+  };
 
-  setEditChanges(e) {
+  setEditChanges = (e) => {
     const { inputKey, sectionKey } = e.currentTarget.dataset;
     const { state } = this;
     const section = state[sectionKey];
@@ -160,9 +151,9 @@ export default class Resume extends Component {
         editForm: { ...section.editForm, [inputKey]: e.target.value },
       },
     });
-  }
+  };
 
-  setSaveEditItem(e) {
+  setSaveEditItem = (e) => {
     const { sectionKey } = e.currentTarget.dataset;
     const { state } = this;
     const section = state[sectionKey];
@@ -175,18 +166,18 @@ export default class Resume extends Component {
     });
 
     this.setState({ [sectionKey]: { ...section, items: saveEditItem } });
-  }
+  };
 
-  static getResetFormValues(objects) {
+  static getResetFormValues = (objects) => {
     const copy = { ...objects };
     Object.keys(copy).forEach((key) => {
       copy[key] = "";
     });
 
     return copy;
-  }
+  };
 
-  addItem(e) {
+  addItem = (e) => {
     const sectionKey = e.target.name;
     const { state } = this;
     const section = state[sectionKey];
@@ -210,15 +201,15 @@ export default class Resume extends Component {
         editId: "",
       },
     });
-  }
+  };
 
-  toggleForm(e) {
+  toggleForm = (e) => {
     const { displayForm } = this.state;
     const isFormOpen = displayForm[e.currentTarget.name];
     this.setState({
       displayForm: { ...displayForm, [e.currentTarget.name]: !isFormOpen },
     });
-  }
+  };
 
   render() {
     const {
