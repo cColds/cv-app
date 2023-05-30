@@ -63,7 +63,9 @@ export default class Experience extends Component {
           >
             Add Experience
           </button>
+
           {/* EDIT */}
+
           <form
             className={edit ? "" : "hide"}
             data-section-key="experience"

@@ -74,6 +74,16 @@ export default class Resume extends Component {
           endDate: "",
           description: "",
         },
+
+        editForm: {
+          project: "",
+          technologies: "",
+          startDate: "",
+          endDate: "",
+          description: "",
+        },
+        edit: false,
+        editId: "",
       },
 
       skills: {
@@ -273,6 +283,9 @@ export default class Resume extends Component {
           setAddForm={this.setAddForm}
           projects={projects}
           addItem={this.addItem}
+          setEditState={this.setEditState}
+          setEditChanges={this.setEditChanges}
+          setSaveEditItem={this.setSaveEditItem}
         />
         <Skills
           isFormOpen={displayForm.skills}
