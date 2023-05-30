@@ -81,70 +81,70 @@ export default class Experience extends Component {
               setEditState(e, resetFormState);
             }}
           >
-            <label htmlFor="experience-company">
+            <label htmlFor="edit-company">
               Company
               <input
                 data-section-key="experience"
                 data-input-key="company"
-                id="experience-company"
+                id="edit-company"
                 placeholder="Google"
                 onChange={setEditChanges}
                 value={editForm.company}
               />
             </label>
 
-            <label htmlFor="experience-job-title">
+            <label htmlFor="edit-job-title">
               Job Title
               <input
                 data-section-key="experience"
                 data-input-key="jobTitle"
-                id="experience-job-title"
+                id="edit-job-title"
                 placeholder="Software Engineer"
                 onChange={setEditChanges}
                 value={editForm.jobTitle}
               />
             </label>
 
-            <label htmlFor="experience-location">
+            <label htmlFor="edit-experience-location">
               Location
               <input
                 data-section-key="experience"
                 data-input-key="location"
-                id="experience-location"
+                id="edit-experience-location"
                 placeholder="Mountain View, CA"
                 onChange={setEditChanges}
                 value={editForm.location}
               />
             </label>
 
-            <label htmlFor="experience-start-date">
+            <label htmlFor="edit-experience-start-date">
               Start Date
               <input
                 data-section-key="experience"
                 data-input-key="startDate"
-                id="experience-start-date"
+                id="edit-experience-start-date"
                 placeholder="May 2020"
                 onChange={setEditChanges}
                 value={editForm.startDate}
               />
             </label>
-            <label htmlFor="experience-end-date">
+            <label htmlFor="edit-experience-end-date">
               End Date
               <input
                 data-section-key="experience"
                 data-input-key="endDate"
-                id="experience-end-date"
+                id="edit-experience-end-date"
                 placeholder="Sep. 2022"
                 onChange={setEditChanges}
                 value={editForm.endDate}
               />
             </label>
-            <label htmlFor="experience-description">
+            <label htmlFor="edit-experience-description">
               Description
               <textarea
                 data-section-key="experience"
                 data-input-key="description"
-                id="experience-description"
+                id="edit-experience-description"
                 rows="10"
                 cols="30"
                 onChange={setEditChanges}
