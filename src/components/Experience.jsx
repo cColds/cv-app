@@ -63,7 +63,7 @@ export default class Experience extends Component {
           >
             Add Experience
           </button>
-          {/* EDIT FORM  */}
+          {/* EDIT */}
           <form
             className={edit ? "" : "hide"}
             data-section-key="experience"
@@ -154,7 +154,9 @@ export default class Experience extends Component {
 
             <button type="submit">Save</button>
           </form>
-          {/* ADD FORM */}
+
+          {/* ADD */}
+
           <form
             data-section-key="experience"
             className={isFormOpen ? "" : "hide"}

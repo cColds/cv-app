@@ -53,6 +53,16 @@ export default class Resume extends Component {
           location: "",
           description: "",
         },
+        editForm: {
+          school: "",
+          degree: "",
+          location: "",
+          startDate: "",
+          endDate: "",
+          description: "",
+        },
+        edit: false,
+        editId: "",
       },
 
       projects: {
@@ -253,6 +263,9 @@ export default class Resume extends Component {
           setAddForm={this.setAddForm}
           addItem={this.addItem}
           education={education}
+          setEditState={this.setEditState}
+          setEditChanges={this.setEditChanges}
+          setSaveEditItem={this.setSaveEditItem}
         />
         <Projects
           isFormOpen={displayForm.projects}
