@@ -156,10 +156,12 @@ export default class Resume extends Component {
     const { sectionKey } = e.currentTarget.dataset;
     this.setState((prevState) => {
       const section = prevState[sectionKey];
+      const updateEditForm =
+        item || Resume.getResetFormValues(section.editForm);
       const editedItems = structuredClone({
         ...section,
         edit: !section.edit,
-        editForm: { ...item },
+        editForm: { ...updateEditForm },
         editId: id,
       });
 

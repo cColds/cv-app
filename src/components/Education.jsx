@@ -72,15 +72,8 @@ export default class Education extends Component {
             onSubmit={(e) => {
               e.preventDefault();
               setSaveEditItem(e);
-              const resetFormState = {
-                company: "",
-                jobTitle: "",
-                description: "",
-                startDate: "",
-                endDate: "",
-                location: "",
-              };
-              setEditState(e, resetFormState);
+
+              setEditState(e);
             }}
           >
             <label htmlFor="edit-school">
