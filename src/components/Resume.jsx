@@ -91,6 +91,11 @@ export default class Resume extends Component {
         addForm: {
           skill: "",
         },
+        editForm: {
+          skill: "",
+        },
+        edit: false,
+        editId: "",
       },
 
       displayForm: {
@@ -293,6 +298,9 @@ export default class Resume extends Component {
           setAddForm={this.setAddForm}
           skills={skills}
           addItem={this.addItem}
+          setEditState={this.setEditState}
+          setEditChanges={this.setEditChanges}
+          setSaveEditItem={this.setSaveEditItem}
         />
       </div>
     );
