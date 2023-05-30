@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 export default class Experience extends Component {
   render() {
     const {
-      isFormOpen,
       toggleForm,
       addItem,
       setAddForm,
@@ -15,13 +14,13 @@ export default class Experience extends Component {
     } = this.props;
     const { company, jobTitle, location, startDate, endDate, description } =
       experience.addForm;
-    const { edit, editForm } = experience;
+    const { edit, editForm, isAddFormOpen } = experience;
 
     return (
       <section className="experience section">
         <h2 className="heading">Experience</h2>
         <div className="content-container">
-          <ul className={isFormOpen || edit ? "hide" : ""}>
+          <ul className={isAddFormOpen || edit ? "hide" : ""}>
             {experience.items.map(({ item, id }) => (
               <li key={id} className="item">
                 <div className="main-info">
@@ -59,7 +58,7 @@ export default class Experience extends Component {
             type="button"
             data-section-key="experience"
             onClick={toggleForm}
-            className={isFormOpen || edit ? "hide" : ""}
+            className={isAddFormOpen || edit ? "hide" : ""}
           >
             Add Experience
           </button>
@@ -154,7 +153,7 @@ export default class Experience extends Component {
 
           <form
             data-section-key="experience"
-            className={isFormOpen ? "" : "hide"}
+            className={isAddFormOpen ? "" : "hide"}
             onSubmit={(e) => {
               e.preventDefault();
               toggleForm(e);
@@ -241,7 +240,6 @@ export default class Experience extends Component {
 }
 
 Experience.propTypes = {
-  isFormOpen: PropTypes.bool.isRequired,
   toggleForm: PropTypes.func.isRequired,
   addItem: PropTypes.func.isRequired,
   setAddForm: PropTypes.func.isRequired,
@@ -254,6 +252,7 @@ Experience.propTypes = {
         email: PropTypes.string,
       })
     ),
+    isAddFormOpen: PropTypes.bool,
     addForm: PropTypes.objectOf(PropTypes.string),
     editForm: PropTypes.objectOf(PropTypes.string),
     edit: PropTypes.bool,

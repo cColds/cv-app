@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 export default class Skills extends Component {
   render() {
     const {
-      isFormOpen,
       toggleForm,
       setAddForm,
       skills,
@@ -14,12 +13,12 @@ export default class Skills extends Component {
       setSaveEditItem,
     } = this.props;
     const { skill } = skills.addForm;
-    const { edit, editForm } = skills;
+    const { edit, editForm, isAddFormOpen } = skills;
     return (
       <section className="skills section">
         <h2 className="heading">Skills</h2>
         <div className="content-container">
-          <ul className={isFormOpen || edit ? "hide" : ""}>
+          <ul className={isAddFormOpen || edit ? "hide" : ""}>
             {skills.items.map(({ item, id }) => (
               <li key={id} className="item">
                 <div className="main-info">
@@ -44,7 +43,7 @@ export default class Skills extends Component {
           <button
             type="button"
             data-section-key="skills"
-            className={isFormOpen || edit ? "hide" : ""}
+            className={isAddFormOpen || edit ? "hide" : ""}
             onClick={(e) => {
               e.preventDefault();
               toggleForm(e);
@@ -84,7 +83,7 @@ export default class Skills extends Component {
 
           <form
             data-section-key="skills"
-            className={isFormOpen ? "" : "hide"}
+            className={isAddFormOpen ? "" : "hide"}
             onSubmit={(e) => {
               e.preventDefault();
               toggleForm(e);
@@ -111,7 +110,6 @@ export default class Skills extends Component {
 }
 
 Skills.propTypes = {
-  isFormOpen: PropTypes.bool.isRequired,
   toggleForm: PropTypes.func.isRequired,
   setAddForm: PropTypes.func.isRequired,
   skills: PropTypes.shape({
@@ -123,6 +121,7 @@ Skills.propTypes = {
     addForm: PropTypes.objectOf(PropTypes.string),
     editForm: PropTypes.objectOf(PropTypes.string),
     edit: PropTypes.bool,
+    isAddFormOpen: PropTypes.bool,
   }).isRequired,
   addItem: PropTypes.func.isRequired,
   setEditState: PropTypes.func.isRequired,

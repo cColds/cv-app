@@ -7,15 +7,15 @@ export default class PersonalInfo extends Component {
       setPersonalInfoForm,
       setPersonalInfoItem,
       toggleForm,
-      isFormOpen,
       personalInfo,
     } = this.props;
     const { fullName, jobTitle, phone, email, address } = personalInfo.item;
+    const { isAddFormOpen } = personalInfo;
 
     return (
       <section className="personal-info section">
         <div className="content-container">
-          <div className={`item ${isFormOpen ? "hide" : ""}`}>
+          <div className={`item ${isAddFormOpen ? "hide" : ""}`}>
             <div className="options">
               <button
                 type="button"
@@ -41,7 +41,7 @@ export default class PersonalInfo extends Component {
 
           <form
             data-section-key="personalInfo"
-            className={isFormOpen ? "" : "hide"}
+            className={isAddFormOpen ? "" : "hide"}
             onSubmit={(e) => {
               e.preventDefault();
               setPersonalInfoItem();
@@ -109,7 +109,8 @@ PersonalInfo.propTypes = {
   setPersonalInfoForm: PropTypes.func.isRequired,
   setPersonalInfoItem: PropTypes.func.isRequired,
   toggleForm: PropTypes.func.isRequired,
-  personalInfo: PropTypes.shape({ item: PropTypes.objectOf(PropTypes.string) })
-    .isRequired,
-  isFormOpen: PropTypes.bool.isRequired,
+  personalInfo: PropTypes.shape({
+    item: PropTypes.objectOf(PropTypes.string),
+    isAddFormOpen: PropTypes.bool,
+  }).isRequired,
 };

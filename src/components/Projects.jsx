@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 export default class Projects extends Component {
   render() {
     const {
-      isFormOpen,
       toggleForm,
       setAddForm,
       projects,
@@ -15,12 +14,12 @@ export default class Projects extends Component {
     } = this.props;
     const { project, technologies, description, startDate, endDate } =
       projects.addForm;
-    const { edit, editForm } = projects;
+    const { edit, editForm, isAddFormOpen } = projects;
     return (
       <section className="projects section">
         <h2 className="heading">Projects</h2>
         <div className="content-container">
-          <ul className={isFormOpen || edit ? "hide" : ""}>
+          <ul className={isAddFormOpen || edit ? "hide" : ""}>
             {projects.items.map(({ item, id }) => (
               <li key={id} className="item">
                 <div className="main-info">
@@ -57,7 +56,7 @@ export default class Projects extends Component {
             type="button"
             data-section-key="projects"
             onClick={toggleForm}
-            className={isFormOpen || edit ? "hide" : ""}
+            className={isAddFormOpen || edit ? "hide" : ""}
           >
             Add Projects
           </button>
@@ -140,7 +139,7 @@ export default class Projects extends Component {
 
           <form
             data-section-key="projects"
-            className={isFormOpen ? "" : "hide"}
+            className={isAddFormOpen ? "" : "hide"}
             onSubmit={(e) => {
               e.preventDefault();
               toggleForm(e);
@@ -212,7 +211,6 @@ export default class Projects extends Component {
 }
 
 Projects.propTypes = {
-  isFormOpen: PropTypes.bool.isRequired,
   toggleForm: PropTypes.func.isRequired,
   setAddForm: PropTypes.func.isRequired,
   projects: PropTypes.shape({
@@ -225,6 +223,7 @@ Projects.propTypes = {
         description: PropTypes.string,
       })
     ),
+    isAddFormOpen: PropTypes.bool,
     addForm: PropTypes.objectOf(PropTypes.string),
     editForm: PropTypes.objectOf(PropTypes.string),
     edit: PropTypes.bool,

@@ -20,6 +20,7 @@ export default class Resume extends Component {
           email: "",
           address: "",
         },
+        isAddFormOpen: false,
       },
       experience: {
         items: [],
@@ -41,6 +42,7 @@ export default class Resume extends Component {
         },
         edit: false,
         editId: "",
+        isAddFormOpen: false,
       },
 
       education: {
@@ -63,6 +65,7 @@ export default class Resume extends Component {
         },
         edit: false,
         editId: "",
+        isAddFormOpen: false,
       },
 
       projects: {
@@ -84,6 +87,7 @@ export default class Resume extends Component {
         },
         edit: false,
         editId: "",
+        isAddFormOpen: false,
       },
 
       skills: {
@@ -96,14 +100,7 @@ export default class Resume extends Component {
         },
         edit: false,
         editId: "",
-      },
-
-      displayForm: {
-        personalInfo: false,
-        experience: false,
-        education: false,
-        projects: false,
-        skills: false,
+        isAddFormOpen: false,
       },
     };
   }
@@ -128,14 +125,11 @@ export default class Resume extends Component {
   setPersonalInfoItem = () => {
     const { personalInfo } = this.state;
     const { editForm } = personalInfo;
-    const updateItem = {
-      ...editForm,
-    };
 
     this.setState({
       personalInfo: {
         ...personalInfo,
-        item: updateItem,
+        item: { ...editForm },
       },
     });
   };
@@ -144,6 +138,7 @@ export default class Resume extends Component {
     const { inputKey, sectionKey } = e.target.dataset;
     const { state } = this;
     const section = state[sectionKey];
+
     this.setState({
       [sectionKey]: {
         ...section,
@@ -154,6 +149,7 @@ export default class Resume extends Component {
 
   setEditState = (e, item, id = "") => {
     const { sectionKey } = e.currentTarget.dataset;
+
     this.setState((prevState) => {
       const section = prevState[sectionKey];
       const updateEditForm =
@@ -237,18 +233,20 @@ export default class Resume extends Component {
   };
 
   toggleForm = (e) => {
-    const { displayForm } = this.state;
     const { sectionKey } = e.currentTarget.dataset;
-    const isFormOpen = displayForm[sectionKey];
-    this.setState({
-      displayForm: { ...displayForm, [sectionKey]: !isFormOpen },
+
+    this.setState((prevState) => {
+      const section = prevState[sectionKey];
+      const { isAddFormOpen } = section;
+
+      return { [sectionKey]: { ...section, isAddFormOpen: !isAddFormOpen } };
     });
   };
 
   render() {
     const {
       personalInfo,
-      displayForm,
+
       experience,
       education,
       projects,
@@ -262,10 +260,8 @@ export default class Resume extends Component {
           setPersonalInfoItem={this.setPersonalInfoItem}
           toggleForm={this.toggleForm}
           personalInfo={personalInfo}
-          isFormOpen={displayForm.personalInfo}
         />
         <Experience
-          isFormOpen={displayForm.experience}
           toggleForm={this.toggleForm}
           addItem={this.addItem}
           setAddForm={this.setAddForm}
@@ -275,7 +271,6 @@ export default class Resume extends Component {
           setSaveEditItem={this.setSaveEditItem}
         />
         <Education
-          isFormOpen={displayForm.education}
           toggleForm={this.toggleForm}
           setAddForm={this.setAddForm}
           addItem={this.addItem}
@@ -285,7 +280,6 @@ export default class Resume extends Component {
           setSaveEditItem={this.setSaveEditItem}
         />
         <Projects
-          isFormOpen={displayForm.projects}
           toggleForm={this.toggleForm}
           setAddForm={this.setAddForm}
           projects={projects}
@@ -295,7 +289,6 @@ export default class Resume extends Component {
           setSaveEditItem={this.setSaveEditItem}
         />
         <Skills
-          isFormOpen={displayForm.skills}
           toggleForm={this.toggleForm}
           setAddForm={this.setAddForm}
           skills={skills}
