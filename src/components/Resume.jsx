@@ -12,7 +12,18 @@ export default class Resume extends Component {
 
     this.state = {
       personalInfo: {
-        item: { fullName: "", jobTitle: "", phone: "", email: "", address: "" },
+        items: [
+          {
+            item: {
+              fullName: "",
+              jobTitle: "",
+              phone: "",
+              email: "",
+              address: "",
+            },
+            id: uniqid(),
+          },
+        ],
         editForm: {
           fullName: "",
           jobTitle: "",
@@ -20,7 +31,8 @@ export default class Resume extends Component {
           email: "",
           address: "",
         },
-        isAddFormOpen: false,
+        editId: "",
+        edit: false,
       },
       experience: {
         items: [],
@@ -104,35 +116,6 @@ export default class Resume extends Component {
       },
     };
   }
-
-  setPersonalInfoForm = (e) => {
-    const { personalInfo } = this.state;
-    const { editForm } = personalInfo;
-    const { inputKey } = e.target.dataset;
-    const updateForm = {
-      ...editForm,
-      [inputKey]: e.target.value,
-    };
-
-    this.setState({
-      personalInfo: {
-        ...personalInfo,
-        editForm: updateForm,
-      },
-    });
-  };
-
-  setPersonalInfoItem = () => {
-    const { personalInfo } = this.state;
-    const { editForm } = personalInfo;
-
-    this.setState({
-      personalInfo: {
-        ...personalInfo,
-        item: { ...editForm },
-      },
-    });
-  };
 
   setInputChange = (e) => {
     const { inputKey, sectionKey, formType } = e.target.dataset;
@@ -242,9 +225,9 @@ export default class Resume extends Component {
     return (
       <div className="resume">
         <PersonalInfo
-          setPersonalInfoForm={this.setPersonalInfoForm}
-          setPersonalInfoItem={this.setPersonalInfoItem}
-          toggleAddForm={this.toggleAddForm}
+          saveEdit={this.saveEdit}
+          setInputChange={this.setInputChange}
+          toggleEditForm={this.toggleEditForm}
           personalInfo={personalInfo}
         />
         <Experience

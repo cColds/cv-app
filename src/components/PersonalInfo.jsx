@@ -3,24 +3,20 @@ import PropTypes from "prop-types";
 
 export default class PersonalInfo extends Component {
   render() {
-    const {
-      setPersonalInfoForm,
-      setPersonalInfoItem,
-      toggleAddForm,
-      personalInfo,
-    } = this.props;
-    const { fullName, jobTitle, phone, email, address } = personalInfo.item;
-    const { isAddFormOpen } = personalInfo;
+    const { toggleEditForm, personalInfo, saveEdit, setInputChange } =
+      this.props;
+    const { item, id } = personalInfo.items[0];
+    const { edit, editForm } = personalInfo;
 
     return (
       <section className="personal-info section">
         <div className="content-container">
-          <div className={`item ${isAddFormOpen ? "hide" : ""}`}>
+          <div className={`item ${edit ? "hide" : ""}`}>
             <div className="options">
               <button
                 type="button"
                 data-section-key="personalInfo"
-                onClick={toggleAddForm}
+                onClick={(e) => toggleEditForm(e, item, id)}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <title>Edit</title>
@@ -28,25 +24,25 @@ export default class PersonalInfo extends Component {
                 </svg>
               </button>
             </div>
-            <h1>{fullName}</h1>
+            <h1>{item.fullName}</h1>
             <h2>
-              <i>{jobTitle}</i>
+              <i>{item.jobTitle}</i>
             </h2>
             <div className="contact">
-              <h3>{phone}</h3>
-              <h3>{email}</h3>
-              <h3>{address}</h3>
+              <h3>{item.phone}</h3>
+              <h3>{item.email}</h3>
+              <h3>{item.address}</h3>
             </div>
           </div>
 
           <form
             data-section-key="personalInfo"
-            data-form-type="addForm"
-            className={isAddFormOpen ? "" : "hide"}
+            data-form-type="editForm"
+            className={edit ? "" : "hide"}
             onSubmit={(e) => {
               e.preventDefault();
-              setPersonalInfoItem();
-              toggleAddForm(e);
+              saveEdit(e);
+              toggleEditForm(e);
             }}
           >
             <label htmlFor="full-name">
@@ -54,8 +50,11 @@ export default class PersonalInfo extends Component {
               <input
                 id="full-name"
                 placeholder="John Smith"
+                data-section-key="personalInfo"
                 data-input-key="fullName"
-                onChange={setPersonalInfoForm}
+                data-form-type="editForm"
+                onChange={setInputChange}
+                value={editForm.fullName}
               />
             </label>
 
@@ -64,8 +63,11 @@ export default class PersonalInfo extends Component {
               <input
                 id="job-title"
                 placeholder="Software Engineer"
+                data-section-key="personalInfo"
                 data-input-key="jobTitle"
-                onChange={setPersonalInfoForm}
+                data-form-type="editForm"
+                onChange={setInputChange}
+                value={editForm.jobTitle}
               />
             </label>
 
@@ -76,8 +78,11 @@ export default class PersonalInfo extends Component {
                 id="phone"
                 placeholder="123-456-7890"
                 pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}"
+                data-section-key="personalInfo"
                 data-input-key="phone"
-                onChange={setPersonalInfoForm}
+                data-form-type="editForm"
+                onChange={setInputChange}
+                value={editForm.phone}
               />
             </label>
             <label htmlFor="email">
@@ -85,8 +90,11 @@ export default class PersonalInfo extends Component {
               <input
                 id="email"
                 placeholder="example@address.com"
+                data-section-key="personalInfo"
                 data-input-key="email"
-                onChange={setPersonalInfoForm}
+                data-form-type="editForm"
+                onChange={setInputChange}
+                value={editForm.email}
               />
             </label>
             <label htmlFor="address">
@@ -94,8 +102,11 @@ export default class PersonalInfo extends Component {
               <input
                 id="address"
                 placeholder="City, Country"
+                data-section-key="personalInfo"
                 data-input-key="address"
-                onChange={setPersonalInfoForm}
+                data-form-type="editForm"
+                onChange={setInputChange}
+                value={editForm.address}
               />
             </label>
             <button type="submit">Save</button>
@@ -107,11 +118,23 @@ export default class PersonalInfo extends Component {
 }
 
 PersonalInfo.propTypes = {
-  setPersonalInfoForm: PropTypes.func.isRequired,
-  setPersonalInfoItem: PropTypes.func.isRequired,
-  toggleAddForm: PropTypes.func.isRequired,
+  saveEdit: PropTypes.func.isRequired,
+  setInputChange: PropTypes.func.isRequired,
+  toggleEditForm: PropTypes.func.isRequired,
   personalInfo: PropTypes.shape({
-    item: PropTypes.objectOf(PropTypes.string),
-    isAddFormOpen: PropTypes.bool,
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        item: PropTypes.shape({
+          fullName: PropTypes.string,
+          jobTitle: PropTypes.string,
+          phone: PropTypes.string,
+          email: PropTypes.string,
+          address: PropTypes.string,
+        }),
+        id: PropTypes.string,
+      })
+    ),
+    editForm: PropTypes.objectOf(PropTypes.string),
+    edit: PropTypes.bool,
   }).isRequired,
 };
