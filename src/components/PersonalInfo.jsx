@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export default class PersonalInfo extends Component {
   render() {
-    const { toggleEditForm, personalInfo, saveEdit, setInputChange } =
+    const { toggleEditForm, personalInfo, saveEdit, handleInputChange } =
       this.props;
     const { item, id } = personalInfo.items[0];
     const { edit, editForm } = personalInfo;
@@ -53,7 +53,7 @@ export default class PersonalInfo extends Component {
                 data-section-key="personalInfo"
                 data-input-key="fullName"
                 data-form-type="editForm"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.fullName}
               />
             </label>
@@ -66,7 +66,7 @@ export default class PersonalInfo extends Component {
                 data-section-key="personalInfo"
                 data-input-key="jobTitle"
                 data-form-type="editForm"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.jobTitle}
               />
             </label>
@@ -81,7 +81,7 @@ export default class PersonalInfo extends Component {
                 data-section-key="personalInfo"
                 data-input-key="phone"
                 data-form-type="editForm"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.phone}
               />
             </label>
@@ -93,7 +93,7 @@ export default class PersonalInfo extends Component {
                 data-section-key="personalInfo"
                 data-input-key="email"
                 data-form-type="editForm"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.email}
               />
             </label>
@@ -105,7 +105,7 @@ export default class PersonalInfo extends Component {
                 data-section-key="personalInfo"
                 data-input-key="address"
                 data-form-type="editForm"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.address}
               />
             </label>
@@ -119,7 +119,7 @@ export default class PersonalInfo extends Component {
 
 PersonalInfo.propTypes = {
   saveEdit: PropTypes.func.isRequired,
-  setInputChange: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
   toggleEditForm: PropTypes.func.isRequired,
   personalInfo: PropTypes.shape({
     items: PropTypes.arrayOf(

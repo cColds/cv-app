@@ -5,7 +5,7 @@ export default class Projects extends Component {
   render() {
     const {
       toggleAddForm,
-      setInputChange,
+      handleInputChange,
       projects,
       addItem,
       toggleEditForm,
@@ -80,7 +80,7 @@ export default class Projects extends Component {
                 data-form-type="editForm"
                 id="edit-project"
                 placeholder="Tic Tac Toe"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.project}
               />
             </label>
@@ -93,7 +93,7 @@ export default class Projects extends Component {
                 data-form-type="editForm"
                 id="edit-technologies"
                 placeholder="Git, React, MongoDB"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.technologies}
               />
             </label>
@@ -106,7 +106,7 @@ export default class Projects extends Component {
                 data-form-type="editForm"
                 id="edit-projects-start-date"
                 placeholder="May 2020"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.startDate}
               />
             </label>
@@ -118,7 +118,7 @@ export default class Projects extends Component {
                 data-form-type="editForm"
                 id="edit-projects-end-date"
                 placeholder="Sep. 2022"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.endDate}
               />
             </label>
@@ -131,7 +131,7 @@ export default class Projects extends Component {
                 id="edit-projects-description"
                 rows="10"
                 cols="30"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.description}
               />
             </label>
@@ -159,7 +159,7 @@ export default class Projects extends Component {
                 data-section-key="projects"
                 data-input-key="project"
                 data-form-type="addForm"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={project}
               />
             </label>
@@ -171,7 +171,7 @@ export default class Projects extends Component {
                 data-section-key="projects"
                 data-input-key="technologies"
                 data-form-type="addForm"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={technologies}
               />
             </label>
@@ -183,7 +183,7 @@ export default class Projects extends Component {
                 data-section-key="projects"
                 data-input-key="startDate"
                 data-form-type="addForm"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={startDate}
               />
             </label>
@@ -195,7 +195,7 @@ export default class Projects extends Component {
                 data-section-key="projects"
                 data-input-key="endDate"
                 data-form-type="addForm"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={endDate}
               />
             </label>
@@ -208,7 +208,7 @@ export default class Projects extends Component {
                 data-section-key="projects"
                 data-input-key="description"
                 data-form-type="addForm"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={description}
               />
             </label>
@@ -240,6 +240,6 @@ Projects.propTypes = {
   }).isRequired,
   addItem: PropTypes.func.isRequired,
   toggleEditForm: PropTypes.func.isRequired,
-  setInputChange: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
   saveEdit: PropTypes.func.isRequired,
 };

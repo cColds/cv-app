@@ -8,7 +8,7 @@ export default class Skills extends Component {
       skills,
       addItem,
       toggleEditForm,
-      setInputChange,
+      handleInputChange,
       saveEdit,
     } = this.props;
     const { skill } = skills.addForm;
@@ -72,7 +72,7 @@ export default class Skills extends Component {
                 data-form-type="editForm"
                 id="edit-skill"
                 placeholder="Git, React, and MongoDB"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.skill}
               />
             </label>
@@ -100,7 +100,7 @@ export default class Skills extends Component {
                 data-section-key="skills"
                 data-input-key="skill"
                 data-form-type="addForm"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={skill}
               />
             </label>
@@ -127,6 +127,6 @@ Skills.propTypes = {
   }).isRequired,
   addItem: PropTypes.func.isRequired,
   toggleEditForm: PropTypes.func.isRequired,
-  setInputChange: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
   saveEdit: PropTypes.func.isRequired,
 };

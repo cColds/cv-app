@@ -5,7 +5,7 @@ export default class Education extends Component {
   render() {
     const {
       toggleAddForm,
-      setInputChange,
+      handleInputChange,
       addItem,
       education,
       toggleEditForm,
@@ -83,7 +83,7 @@ export default class Education extends Component {
                 data-form-type="editForm"
                 id="edit-school"
                 placeholder="Stanford University"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.school}
               />
             </label>
@@ -96,7 +96,7 @@ export default class Education extends Component {
                 data-form-type="editForm"
                 id="edit-degree"
                 placeholder="Bachelor of Arts in Computer Science"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.degree}
               />
             </label>
@@ -109,7 +109,7 @@ export default class Education extends Component {
                 data-form-type="editForm"
                 id="edit-education-location"
                 placeholder="Mountain View, CA"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.location}
               />
             </label>
@@ -122,7 +122,7 @@ export default class Education extends Component {
                 data-form-type="editForm"
                 id="edit-education-start-date"
                 placeholder="May 2020"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.startDate}
               />
             </label>
@@ -134,7 +134,7 @@ export default class Education extends Component {
                 data-form-type="editForm"
                 id="edit-education-end-date"
                 placeholder="Sep. 2022"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.endDate}
               />
             </label>
@@ -147,7 +147,7 @@ export default class Education extends Component {
                 id="edit-education-description"
                 rows="10"
                 cols="30"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.description}
               />
             </label>
@@ -176,7 +176,7 @@ export default class Education extends Component {
                 data-form-type="addForm"
                 placeholder="Stanford University"
                 value={school}
-                onChange={setInputChange}
+                onChange={handleInputChange}
               />
             </label>
             <label htmlFor="degree">
@@ -188,7 +188,7 @@ export default class Education extends Component {
                 data-form-type="addForm"
                 placeholder="Bachelor of Arts in Computer Science"
                 value={degree}
-                onChange={setInputChange}
+                onChange={handleInputChange}
               />
             </label>
 
@@ -201,7 +201,7 @@ export default class Education extends Component {
                 data-form-type="addForm"
                 placeholder="Brooklyn, NY"
                 value={location}
-                onChange={setInputChange}
+                onChange={handleInputChange}
               />
             </label>
 
@@ -214,7 +214,7 @@ export default class Education extends Component {
                 data-form-type="addForm"
                 placeholder="May 2020"
                 value={startDate}
-                onChange={setInputChange}
+                onChange={handleInputChange}
               />
             </label>
             <label htmlFor="education-end-date">
@@ -226,7 +226,7 @@ export default class Education extends Component {
                 data-form-type="addForm"
                 placeholder="Sep. 2022"
                 value={endDate}
-                onChange={setInputChange}
+                onChange={handleInputChange}
               />
             </label>
             <label htmlFor="education-description">
@@ -239,7 +239,7 @@ export default class Education extends Component {
                 rows="10"
                 cols="30"
                 value={description}
-                onChange={setInputChange}
+                onChange={handleInputChange}
               />
             </label>
             <button type="submit">Save</button>
@@ -253,7 +253,7 @@ export default class Education extends Component {
 Education.propTypes = {
   toggleAddForm: PropTypes.func.isRequired,
 
-  setInputChange: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
   addItem: PropTypes.func.isRequired,
   education: PropTypes.shape({
     items: PropTypes.arrayOf(

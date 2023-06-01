@@ -117,7 +117,16 @@ export default class Resume extends Component {
     };
   }
 
-  setInputChange = (e) => {
+  static getResetFormValues = (objects) => {
+    const copy = { ...objects };
+    Object.keys(copy).forEach((key) => {
+      copy[key] = "";
+    });
+
+    return copy;
+  };
+
+  handleInputChange = (e) => {
     const { inputKey, sectionKey, formType } = e.target.dataset;
     const { state } = this;
     const section = state[sectionKey];
@@ -128,15 +137,6 @@ export default class Resume extends Component {
         [formType]: { ...section[formType], [inputKey]: e.target.value },
       },
     });
-  };
-
-  static getResetFormValues = (objects) => {
-    const copy = { ...objects };
-    Object.keys(copy).forEach((key) => {
-      copy[key] = "";
-    });
-
-    return copy;
   };
 
   saveEdit = (e) => {
@@ -226,7 +226,7 @@ export default class Resume extends Component {
       <div className="resume">
         <PersonalInfo
           saveEdit={this.saveEdit}
-          setInputChange={this.setInputChange}
+          handleInputChange={this.handleInputChange}
           toggleEditForm={this.toggleEditForm}
           personalInfo={personalInfo}
         />
@@ -235,7 +235,7 @@ export default class Resume extends Component {
           addItem={this.addItem}
           experience={experience}
           toggleEditForm={this.toggleEditForm}
-          setInputChange={this.setInputChange}
+          handleInputChange={this.handleInputChange}
           saveEdit={this.saveEdit}
         />
         <Education
@@ -243,7 +243,7 @@ export default class Resume extends Component {
           addItem={this.addItem}
           education={education}
           toggleEditForm={this.toggleEditForm}
-          setInputChange={this.setInputChange}
+          handleInputChange={this.handleInputChange}
           saveEdit={this.saveEdit}
         />
         <Projects
@@ -251,7 +251,7 @@ export default class Resume extends Component {
           projects={projects}
           addItem={this.addItem}
           toggleEditForm={this.toggleEditForm}
-          setInputChange={this.setInputChange}
+          handleInputChange={this.handleInputChange}
           saveEdit={this.saveEdit}
         />
         <Skills
@@ -259,7 +259,7 @@ export default class Resume extends Component {
           skills={skills}
           addItem={this.addItem}
           toggleEditForm={this.toggleEditForm}
-          setInputChange={this.setInputChange}
+          handleInputChange={this.handleInputChange}
           saveEdit={this.saveEdit}
         />
       </div>

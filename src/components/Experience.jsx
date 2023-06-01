@@ -6,7 +6,7 @@ export default class Experience extends Component {
     const {
       toggleAddForm,
       addItem,
-      setInputChange,
+      handleInputChange,
       experience,
       toggleEditForm,
 
@@ -82,7 +82,7 @@ export default class Experience extends Component {
                 data-form-type="editForm"
                 id="edit-company"
                 placeholder="Google"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.company}
               />
             </label>
@@ -95,7 +95,7 @@ export default class Experience extends Component {
                 data-form-type="editForm"
                 id="edit-job-title"
                 placeholder="Software Engineer"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.jobTitle}
               />
             </label>
@@ -108,7 +108,7 @@ export default class Experience extends Component {
                 data-form-type="editForm"
                 id="edit-experience-location"
                 placeholder="Mountain View, CA"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.location}
               />
             </label>
@@ -121,7 +121,7 @@ export default class Experience extends Component {
                 data-form-type="editForm"
                 id="edit-experience-start-date"
                 placeholder="May 2020"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.startDate}
               />
             </label>
@@ -133,7 +133,7 @@ export default class Experience extends Component {
                 data-form-type="editForm"
                 id="edit-experience-end-date"
                 placeholder="Sep. 2022"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.endDate}
               />
             </label>
@@ -146,7 +146,7 @@ export default class Experience extends Component {
                 id="edit-experience-description"
                 rows="10"
                 cols="30"
-                onChange={setInputChange}
+                onChange={handleInputChange}
                 value={editForm.description}
               />
             </label>
@@ -175,7 +175,7 @@ export default class Experience extends Component {
                 data-input-key="company"
                 data-form-type="addForm"
                 value={company}
-                onChange={setInputChange}
+                onChange={handleInputChange}
               />
             </label>
 
@@ -188,7 +188,7 @@ export default class Experience extends Component {
                 data-input-key="jobTitle"
                 data-form-type="addForm"
                 value={jobTitle}
-                onChange={setInputChange}
+                onChange={handleInputChange}
               />
             </label>
 
@@ -201,7 +201,7 @@ export default class Experience extends Component {
                 data-input-key="location"
                 data-form-type="addForm"
                 value={location}
-                onChange={setInputChange}
+                onChange={handleInputChange}
               />
             </label>
 
@@ -214,7 +214,7 @@ export default class Experience extends Component {
                 data-input-key="startDate"
                 data-form-type="addForm"
                 value={startDate}
-                onChange={setInputChange}
+                onChange={handleInputChange}
               />
             </label>
             <label htmlFor="experience-end-date">
@@ -226,7 +226,7 @@ export default class Experience extends Component {
                 data-input-key="endDate"
                 data-form-type="addForm"
                 value={endDate}
-                onChange={setInputChange}
+                onChange={handleInputChange}
               />
             </label>
             <label htmlFor="experience-description">
@@ -239,7 +239,7 @@ export default class Experience extends Component {
                 data-input-key="description"
                 data-form-type="addForm"
                 value={description}
-                onChange={setInputChange}
+                onChange={handleInputChange}
               />
             </label>
 
@@ -254,7 +254,7 @@ export default class Experience extends Component {
 Experience.propTypes = {
   toggleAddForm: PropTypes.func.isRequired,
   addItem: PropTypes.func.isRequired,
-  setInputChange: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
   experience: PropTypes.shape({
     items: PropTypes.arrayOf(
       PropTypes.shape({
