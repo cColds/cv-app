@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 export default class Education extends Component {
   render() {
     const {
-      toggleForm,
+      toggleAddForm,
       setInputChange,
       addItem,
       education,
-      setEditState,
-      setSaveEditItem,
+      toggleEditForm,
+      saveEdit,
     } = this.props;
     const { school, degree, startDate, endDate, location, description } =
       education.addForm;
@@ -42,7 +42,7 @@ export default class Education extends Component {
                   type="button"
                   data-section-key="education"
                   onClick={(e) => {
-                    setEditState(e, item, id);
+                    toggleEditForm(e, item, id);
                   }}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -57,7 +57,7 @@ export default class Education extends Component {
           <button
             type="button"
             data-section-key="education"
-            onClick={toggleForm}
+            onClick={toggleAddForm}
             className={isAddFormOpen || edit ? "hide" : ""}
           >
             Add Education
@@ -70,9 +70,9 @@ export default class Education extends Component {
             data-section-key="education"
             onSubmit={(e) => {
               e.preventDefault();
-              setSaveEditItem(e);
+              saveEdit(e);
 
-              setEditState(e);
+              toggleEditForm(e);
             }}
           >
             <label htmlFor="edit-school">
@@ -159,10 +159,11 @@ export default class Education extends Component {
 
           <form
             data-section-key="education"
+            data-form-type="addForm"
             className={isAddFormOpen ? "" : "hide"}
             onSubmit={(e) => {
               e.preventDefault();
-              toggleForm(e);
+              toggleAddForm(e);
               addItem(e);
             }}
           >
@@ -250,7 +251,7 @@ export default class Education extends Component {
 }
 
 Education.propTypes = {
-  toggleForm: PropTypes.func.isRequired,
+  toggleAddForm: PropTypes.func.isRequired,
 
   setInputChange: PropTypes.func.isRequired,
   addItem: PropTypes.func.isRequired,
@@ -270,6 +271,6 @@ Education.propTypes = {
     edit: PropTypes.bool,
     editForm: PropTypes.objectOf(PropTypes.string),
   }).isRequired,
-  setEditState: PropTypes.func.isRequired,
-  setSaveEditItem: PropTypes.func.isRequired,
+  toggleEditForm: PropTypes.func.isRequired,
+  saveEdit: PropTypes.func.isRequired,
 };

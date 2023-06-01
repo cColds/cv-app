@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 export default class Skills extends Component {
   render() {
     const {
-      toggleForm,
+      toggleAddForm,
       skills,
       addItem,
-      setEditState,
+      toggleEditForm,
       setInputChange,
-      setSaveEditItem,
+      saveEdit,
     } = this.props;
     const { skill } = skills.addForm;
     const { edit, editForm, isAddFormOpen } = skills;
@@ -27,7 +27,7 @@ export default class Skills extends Component {
                   type="button"
                   data-section-key="skills"
                   onClick={(e) => {
-                    setEditState(e, item, id);
+                    toggleEditForm(e, item, id);
                   }}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -42,10 +42,11 @@ export default class Skills extends Component {
           <button
             type="button"
             data-section-key="skills"
+            data-form-type="addForm"
             className={isAddFormOpen || edit ? "hide" : ""}
             onClick={(e) => {
               e.preventDefault();
-              toggleForm(e);
+              toggleAddForm(e);
             }}
           >
             Add Skills
@@ -58,9 +59,9 @@ export default class Skills extends Component {
             data-section-key="skills"
             onSubmit={(e) => {
               e.preventDefault();
-              setSaveEditItem(e);
+              saveEdit(e);
 
-              setEditState(e);
+              toggleEditForm(e);
             }}
           >
             <label htmlFor="edit-skill">
@@ -83,10 +84,11 @@ export default class Skills extends Component {
 
           <form
             data-section-key="skills"
+            data-form-type="addForm"
             className={isAddFormOpen ? "" : "hide"}
             onSubmit={(e) => {
               e.preventDefault();
-              toggleForm(e);
+              toggleAddForm(e);
               addItem(e);
             }}
           >
@@ -111,7 +113,7 @@ export default class Skills extends Component {
 }
 
 Skills.propTypes = {
-  toggleForm: PropTypes.func.isRequired,
+  toggleAddForm: PropTypes.func.isRequired,
   skills: PropTypes.shape({
     items: PropTypes.arrayOf(
       PropTypes.shape({
@@ -124,7 +126,7 @@ Skills.propTypes = {
     isAddFormOpen: PropTypes.bool,
   }).isRequired,
   addItem: PropTypes.func.isRequired,
-  setEditState: PropTypes.func.isRequired,
+  toggleEditForm: PropTypes.func.isRequired,
   setInputChange: PropTypes.func.isRequired,
-  setSaveEditItem: PropTypes.func.isRequired,
+  saveEdit: PropTypes.func.isRequired,
 };

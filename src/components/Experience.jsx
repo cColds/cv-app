@@ -4,13 +4,13 @@ import PropTypes from "prop-types";
 export default class Experience extends Component {
   render() {
     const {
-      toggleForm,
+      toggleAddForm,
       addItem,
       setInputChange,
       experience,
-      setEditState,
+      toggleEditForm,
 
-      setSaveEditItem,
+      saveEdit,
     } = this.props;
     const { company, jobTitle, location, startDate, endDate, description } =
       experience.addForm;
@@ -42,7 +42,7 @@ export default class Experience extends Component {
                   type="button"
                   data-section-key="experience"
                   onClick={(e) => {
-                    setEditState(e, item, id);
+                    toggleEditForm(e, item, id);
                   }}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -57,7 +57,7 @@ export default class Experience extends Component {
           <button
             type="button"
             data-section-key="experience"
-            onClick={toggleForm}
+            onClick={toggleAddForm}
             className={isAddFormOpen || edit ? "hide" : ""}
           >
             Add Experience
@@ -70,9 +70,8 @@ export default class Experience extends Component {
             data-section-key="experience"
             onSubmit={(e) => {
               e.preventDefault();
-              setSaveEditItem(e);
-
-              setEditState(e);
+              saveEdit(e);
+              toggleEditForm(e);
             }}
           >
             <label htmlFor="edit-company">
@@ -159,10 +158,11 @@ export default class Experience extends Component {
 
           <form
             data-section-key="experience"
+            data-form-type="addForm"
             className={isAddFormOpen ? "" : "hide"}
             onSubmit={(e) => {
               e.preventDefault();
-              toggleForm(e);
+              toggleAddForm(e);
               addItem(e);
             }}
           >
@@ -252,7 +252,7 @@ export default class Experience extends Component {
 }
 
 Experience.propTypes = {
-  toggleForm: PropTypes.func.isRequired,
+  toggleAddForm: PropTypes.func.isRequired,
   addItem: PropTypes.func.isRequired,
   setInputChange: PropTypes.func.isRequired,
   experience: PropTypes.shape({
@@ -269,6 +269,6 @@ Experience.propTypes = {
     editForm: PropTypes.objectOf(PropTypes.string),
     edit: PropTypes.bool,
   }).isRequired,
-  setEditState: PropTypes.func.isRequired,
-  setSaveEditItem: PropTypes.func.isRequired,
+  toggleEditForm: PropTypes.func.isRequired,
+  saveEdit: PropTypes.func.isRequired,
 };

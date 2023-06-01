@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 export default class Projects extends Component {
   render() {
     const {
-      toggleForm,
+      toggleAddForm,
       setInputChange,
       projects,
       addItem,
-      setEditState,
-      setSaveEditItem,
+      toggleEditForm,
+      saveEdit,
     } = this.props;
     const { project, technologies, description, startDate, endDate } =
       projects.addForm;
@@ -39,7 +39,7 @@ export default class Projects extends Component {
                   type="button"
                   data-section-key="projects"
                   onClick={(e) => {
-                    setEditState(e, item, id);
+                    toggleEditForm(e, item, id);
                   }}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -54,7 +54,7 @@ export default class Projects extends Component {
           <button
             type="button"
             data-section-key="projects"
-            onClick={toggleForm}
+            onClick={toggleAddForm}
             className={isAddFormOpen || edit ? "hide" : ""}
           >
             Add Projects
@@ -67,9 +67,9 @@ export default class Projects extends Component {
             data-section-key="projects"
             onSubmit={(e) => {
               e.preventDefault();
-              setSaveEditItem(e);
+              saveEdit(e);
 
-              setEditState(e);
+              toggleEditForm(e);
             }}
           >
             <label htmlFor="edit-project">
@@ -143,10 +143,11 @@ export default class Projects extends Component {
 
           <form
             data-section-key="projects"
+            data-form-type="addForm"
             className={isAddFormOpen ? "" : "hide"}
             onSubmit={(e) => {
               e.preventDefault();
-              toggleForm(e);
+              toggleAddForm(e);
               addItem(e);
             }}
           >
@@ -220,7 +221,7 @@ export default class Projects extends Component {
 }
 
 Projects.propTypes = {
-  toggleForm: PropTypes.func.isRequired,
+  toggleAddForm: PropTypes.func.isRequired,
 
   projects: PropTypes.shape({
     items: PropTypes.arrayOf(
@@ -238,7 +239,7 @@ Projects.propTypes = {
     edit: PropTypes.bool,
   }).isRequired,
   addItem: PropTypes.func.isRequired,
-  setEditState: PropTypes.func.isRequired,
+  toggleEditForm: PropTypes.func.isRequired,
   setInputChange: PropTypes.func.isRequired,
-  setSaveEditItem: PropTypes.func.isRequired,
+  saveEdit: PropTypes.func.isRequired,
 };

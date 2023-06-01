@@ -147,43 +147,6 @@ export default class Resume extends Component {
     });
   };
 
-  setEditState = (e, item, id = "") => {
-    const { sectionKey } = e.currentTarget.dataset;
-
-    this.setState((prevState) => {
-      const section = prevState[sectionKey];
-      const updateEditForm =
-        item || Resume.getResetFormValues(section.editForm);
-      const editedItems = structuredClone({
-        ...section,
-        edit: !section.edit,
-        editForm: { ...updateEditForm },
-        editId: id,
-      });
-
-      return {
-        [sectionKey]: {
-          ...editedItems,
-        },
-      };
-    });
-  };
-
-  setSaveEditItem = (e) => {
-    const { sectionKey } = e.currentTarget.dataset;
-    const { state } = this;
-    const section = state[sectionKey];
-    const saveEditItem = section.items.map(({ item, id }) => {
-      if (section.editId === id) {
-        return { item: { ...section.editForm }, id };
-      }
-
-      return { item: { ...item }, id };
-    });
-
-    this.setState({ [sectionKey]: { ...section, items: saveEditItem } });
-  };
-
   static getResetFormValues = (objects) => {
     const copy = { ...objects };
     Object.keys(copy).forEach((key) => {
@@ -191,6 +154,21 @@ export default class Resume extends Component {
     });
 
     return copy;
+  };
+
+  saveEdit = (e) => {
+    const { sectionKey } = e.currentTarget.dataset;
+    const { state } = this;
+    const section = state[sectionKey];
+    const updateItems = section.items.map(({ item, id }) => {
+      if (section.editId === id) {
+        return { item: { ...section.editForm }, id };
+      }
+
+      return { item: { ...item }, id };
+    });
+
+    this.setState({ [sectionKey]: { ...section, items: updateItems } });
   };
 
   addItem = (e) => {
@@ -218,7 +196,29 @@ export default class Resume extends Component {
     });
   };
 
-  toggleForm = (e) => {
+  toggleEditForm = (e, item, id = "") => {
+    const { sectionKey } = e.currentTarget.dataset;
+
+    this.setState((prevState) => {
+      const section = prevState[sectionKey];
+      const updateEditForm =
+        item || Resume.getResetFormValues(section.editForm);
+      const editedItems = structuredClone({
+        ...section,
+        edit: !section.edit,
+        editForm: { ...updateEditForm },
+        editId: id,
+      });
+
+      return {
+        [sectionKey]: {
+          ...editedItems,
+        },
+      };
+    });
+  };
+
+  toggleAddForm = (e) => {
     const { sectionKey } = e.currentTarget.dataset;
 
     this.setState((prevState) => {
@@ -244,40 +244,40 @@ export default class Resume extends Component {
         <PersonalInfo
           setPersonalInfoForm={this.setPersonalInfoForm}
           setPersonalInfoItem={this.setPersonalInfoItem}
-          toggleForm={this.toggleForm}
+          toggleAddForm={this.toggleAddForm}
           personalInfo={personalInfo}
         />
         <Experience
-          toggleForm={this.toggleForm}
+          toggleAddForm={this.toggleAddForm}
           addItem={this.addItem}
           experience={experience}
-          setEditState={this.setEditState}
+          toggleEditForm={this.toggleEditForm}
           setInputChange={this.setInputChange}
-          setSaveEditItem={this.setSaveEditItem}
+          saveEdit={this.saveEdit}
         />
         <Education
-          toggleForm={this.toggleForm}
+          toggleAddForm={this.toggleAddForm}
           addItem={this.addItem}
           education={education}
-          setEditState={this.setEditState}
+          toggleEditForm={this.toggleEditForm}
           setInputChange={this.setInputChange}
-          setSaveEditItem={this.setSaveEditItem}
+          saveEdit={this.saveEdit}
         />
         <Projects
-          toggleForm={this.toggleForm}
+          toggleAddForm={this.toggleAddForm}
           projects={projects}
           addItem={this.addItem}
-          setEditState={this.setEditState}
+          toggleEditForm={this.toggleEditForm}
           setInputChange={this.setInputChange}
-          setSaveEditItem={this.setSaveEditItem}
+          saveEdit={this.saveEdit}
         />
         <Skills
-          toggleForm={this.toggleForm}
+          toggleAddForm={this.toggleAddForm}
           skills={skills}
           addItem={this.addItem}
-          setEditState={this.setEditState}
+          toggleEditForm={this.toggleEditForm}
           setInputChange={this.setInputChange}
-          setSaveEditItem={this.setSaveEditItem}
+          saveEdit={this.saveEdit}
         />
       </div>
     );

@@ -6,7 +6,7 @@ export default class PersonalInfo extends Component {
     const {
       setPersonalInfoForm,
       setPersonalInfoItem,
-      toggleForm,
+      toggleAddForm,
       personalInfo,
     } = this.props;
     const { fullName, jobTitle, phone, email, address } = personalInfo.item;
@@ -20,7 +20,7 @@ export default class PersonalInfo extends Component {
               <button
                 type="button"
                 data-section-key="personalInfo"
-                onClick={toggleForm}
+                onClick={toggleAddForm}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <title>Edit</title>
@@ -41,11 +41,12 @@ export default class PersonalInfo extends Component {
 
           <form
             data-section-key="personalInfo"
+            data-form-type="addForm"
             className={isAddFormOpen ? "" : "hide"}
             onSubmit={(e) => {
               e.preventDefault();
               setPersonalInfoItem();
-              toggleForm(e);
+              toggleAddForm(e);
             }}
           >
             <label htmlFor="full-name">
@@ -108,7 +109,7 @@ export default class PersonalInfo extends Component {
 PersonalInfo.propTypes = {
   setPersonalInfoForm: PropTypes.func.isRequired,
   setPersonalInfoItem: PropTypes.func.isRequired,
-  toggleForm: PropTypes.func.isRequired,
+  toggleAddForm: PropTypes.func.isRequired,
   personalInfo: PropTypes.shape({
     item: PropTypes.objectOf(PropTypes.string),
     isAddFormOpen: PropTypes.bool,
