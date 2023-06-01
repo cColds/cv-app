@@ -5,11 +5,10 @@ export default class Projects extends Component {
   render() {
     const {
       toggleForm,
-      setAddForm,
+      setInputChange,
       projects,
       addItem,
       setEditState,
-      setEditChanges,
       setSaveEditItem,
     } = this.props;
     const { project, technologies, description, startDate, endDate } =
@@ -78,9 +77,10 @@ export default class Projects extends Component {
               <input
                 data-section-key="projects"
                 data-input-key="project"
+                data-form-type="editForm"
                 id="edit-project"
                 placeholder="Tic Tac Toe"
-                onChange={setEditChanges}
+                onChange={setInputChange}
                 value={editForm.project}
               />
             </label>
@@ -90,9 +90,10 @@ export default class Projects extends Component {
               <input
                 data-section-key="projects"
                 data-input-key="technologies"
+                data-form-type="editForm"
                 id="edit-technologies"
                 placeholder="Git, React, MongoDB"
-                onChange={setEditChanges}
+                onChange={setInputChange}
                 value={editForm.technologies}
               />
             </label>
@@ -102,9 +103,10 @@ export default class Projects extends Component {
               <input
                 data-section-key="projects"
                 data-input-key="startDate"
+                data-form-type="editForm"
                 id="edit-projects-start-date"
                 placeholder="May 2020"
-                onChange={setEditChanges}
+                onChange={setInputChange}
                 value={editForm.startDate}
               />
             </label>
@@ -113,9 +115,10 @@ export default class Projects extends Component {
               <input
                 data-section-key="projects"
                 data-input-key="endDate"
+                data-form-type="editForm"
                 id="edit-projects-end-date"
                 placeholder="Sep. 2022"
-                onChange={setEditChanges}
+                onChange={setInputChange}
                 value={editForm.endDate}
               />
             </label>
@@ -124,10 +127,11 @@ export default class Projects extends Component {
               <textarea
                 data-section-key="projects"
                 data-input-key="description"
+                data-form-type="editForm"
                 id="edit-projects-description"
                 rows="10"
                 cols="30"
-                onChange={setEditChanges}
+                onChange={setInputChange}
                 value={editForm.description}
               />
             </label>
@@ -153,7 +157,8 @@ export default class Projects extends Component {
                 placeholder="Tic Tac Toe"
                 data-section-key="projects"
                 data-input-key="project"
-                onChange={setAddForm}
+                data-form-type="addForm"
+                onChange={setInputChange}
                 value={project}
               />
             </label>
@@ -164,7 +169,8 @@ export default class Projects extends Component {
                 placeholder="Git, React, MongoDB"
                 data-section-key="projects"
                 data-input-key="technologies"
-                onChange={setAddForm}
+                data-form-type="addForm"
+                onChange={setInputChange}
                 value={technologies}
               />
             </label>
@@ -175,7 +181,8 @@ export default class Projects extends Component {
                 placeholder="May 2020"
                 data-section-key="projects"
                 data-input-key="startDate"
-                onChange={setAddForm}
+                data-form-type="addForm"
+                onChange={setInputChange}
                 value={startDate}
               />
             </label>
@@ -186,7 +193,8 @@ export default class Projects extends Component {
                 placeholder="Sep. 2022"
                 data-section-key="projects"
                 data-input-key="endDate"
-                onChange={setAddForm}
+                data-form-type="addForm"
+                onChange={setInputChange}
                 value={endDate}
               />
             </label>
@@ -198,7 +206,8 @@ export default class Projects extends Component {
                 cols="30"
                 data-section-key="projects"
                 data-input-key="description"
-                onChange={setAddForm}
+                data-form-type="addForm"
+                onChange={setInputChange}
                 value={description}
               />
             </label>
@@ -212,7 +221,7 @@ export default class Projects extends Component {
 
 Projects.propTypes = {
   toggleForm: PropTypes.func.isRequired,
-  setAddForm: PropTypes.func.isRequired,
+
   projects: PropTypes.shape({
     items: PropTypes.arrayOf(
       PropTypes.shape({
@@ -230,6 +239,6 @@ Projects.propTypes = {
   }).isRequired,
   addItem: PropTypes.func.isRequired,
   setEditState: PropTypes.func.isRequired,
-  setEditChanges: PropTypes.func.isRequired,
+  setInputChange: PropTypes.func.isRequired,
   setSaveEditItem: PropTypes.func.isRequired,
 };

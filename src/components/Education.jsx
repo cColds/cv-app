@@ -5,13 +5,11 @@ export default class Education extends Component {
   render() {
     const {
       toggleForm,
-
-      setAddForm,
+      setInputChange,
       addItem,
       education,
       setEditState,
       setSaveEditItem,
-      setEditChanges,
     } = this.props;
     const { school, degree, startDate, endDate, location, description } =
       education.addForm;
@@ -82,9 +80,10 @@ export default class Education extends Component {
               <input
                 data-section-key="education"
                 data-input-key="school"
+                data-form-type="editForm"
                 id="edit-school"
                 placeholder="Stanford University"
-                onChange={setEditChanges}
+                onChange={setInputChange}
                 value={editForm.school}
               />
             </label>
@@ -94,9 +93,10 @@ export default class Education extends Component {
               <input
                 data-section-key="education"
                 data-input-key="degree"
+                data-form-type="editForm"
                 id="edit-degree"
                 placeholder="Bachelor of Arts in Computer Science"
-                onChange={setEditChanges}
+                onChange={setInputChange}
                 value={editForm.degree}
               />
             </label>
@@ -106,9 +106,10 @@ export default class Education extends Component {
               <input
                 data-section-key="education"
                 data-input-key="location"
+                data-form-type="editForm"
                 id="edit-education-location"
                 placeholder="Mountain View, CA"
-                onChange={setEditChanges}
+                onChange={setInputChange}
                 value={editForm.location}
               />
             </label>
@@ -118,9 +119,10 @@ export default class Education extends Component {
               <input
                 data-section-key="education"
                 data-input-key="startDate"
+                data-form-type="editForm"
                 id="edit-education-start-date"
                 placeholder="May 2020"
-                onChange={setEditChanges}
+                onChange={setInputChange}
                 value={editForm.startDate}
               />
             </label>
@@ -129,9 +131,10 @@ export default class Education extends Component {
               <input
                 data-section-key="education"
                 data-input-key="endDate"
+                data-form-type="editForm"
                 id="edit-education-end-date"
                 placeholder="Sep. 2022"
-                onChange={setEditChanges}
+                onChange={setInputChange}
                 value={editForm.endDate}
               />
             </label>
@@ -140,10 +143,11 @@ export default class Education extends Component {
               <textarea
                 data-section-key="education"
                 data-input-key="description"
+                data-form-type="editForm"
                 id="edit-education-description"
                 rows="10"
                 cols="30"
-                onChange={setEditChanges}
+                onChange={setInputChange}
                 value={editForm.description}
               />
             </label>
@@ -168,9 +172,10 @@ export default class Education extends Component {
                 id="school"
                 data-section-key="education"
                 data-input-key="school"
+                data-form-type="addForm"
                 placeholder="Stanford University"
                 value={school}
-                onChange={setAddForm}
+                onChange={setInputChange}
               />
             </label>
             <label htmlFor="degree">
@@ -179,9 +184,10 @@ export default class Education extends Component {
                 id="degree"
                 data-section-key="education"
                 data-input-key="degree"
+                data-form-type="addForm"
                 placeholder="Bachelor of Arts in Computer Science"
                 value={degree}
-                onChange={setAddForm}
+                onChange={setInputChange}
               />
             </label>
 
@@ -191,9 +197,10 @@ export default class Education extends Component {
                 id="location"
                 data-section-key="education"
                 data-input-key="location"
+                data-form-type="addForm"
                 placeholder="Brooklyn, NY"
                 value={location}
-                onChange={setAddForm}
+                onChange={setInputChange}
               />
             </label>
 
@@ -203,9 +210,10 @@ export default class Education extends Component {
                 id="education-start-date"
                 data-section-key="education"
                 data-input-key="startDate"
+                data-form-type="addForm"
                 placeholder="May 2020"
                 value={startDate}
-                onChange={setAddForm}
+                onChange={setInputChange}
               />
             </label>
             <label htmlFor="education-end-date">
@@ -214,9 +222,10 @@ export default class Education extends Component {
                 id="education-end-date"
                 data-section-key="education"
                 data-input-key="endDate"
+                data-form-type="addForm"
                 placeholder="Sep. 2022"
                 value={endDate}
-                onChange={setAddForm}
+                onChange={setInputChange}
               />
             </label>
             <label htmlFor="education-description">
@@ -225,10 +234,11 @@ export default class Education extends Component {
                 id="education-description"
                 data-section-key="education"
                 data-input-key="description"
+                data-form-type="addForm"
                 rows="10"
                 cols="30"
                 value={description}
-                onChange={setAddForm}
+                onChange={setInputChange}
               />
             </label>
             <button type="submit">Save</button>
@@ -242,7 +252,7 @@ export default class Education extends Component {
 Education.propTypes = {
   toggleForm: PropTypes.func.isRequired,
 
-  setAddForm: PropTypes.func.isRequired,
+  setInputChange: PropTypes.func.isRequired,
   addItem: PropTypes.func.isRequired,
   education: PropTypes.shape({
     items: PropTypes.arrayOf(
@@ -262,5 +272,4 @@ Education.propTypes = {
   }).isRequired,
   setEditState: PropTypes.func.isRequired,
   setSaveEditItem: PropTypes.func.isRequired,
-  setEditChanges: PropTypes.func.isRequired,
 };

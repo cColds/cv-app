@@ -6,10 +6,10 @@ export default class Experience extends Component {
     const {
       toggleForm,
       addItem,
-      setAddForm,
+      setInputChange,
       experience,
       setEditState,
-      setEditChanges,
+
       setSaveEditItem,
     } = this.props;
     const { company, jobTitle, location, startDate, endDate, description } =
@@ -80,9 +80,10 @@ export default class Experience extends Component {
               <input
                 data-section-key="experience"
                 data-input-key="company"
+                data-form-type="editForm"
                 id="edit-company"
                 placeholder="Google"
-                onChange={setEditChanges}
+                onChange={setInputChange}
                 value={editForm.company}
               />
             </label>
@@ -92,9 +93,10 @@ export default class Experience extends Component {
               <input
                 data-section-key="experience"
                 data-input-key="jobTitle"
+                data-form-type="editForm"
                 id="edit-job-title"
                 placeholder="Software Engineer"
-                onChange={setEditChanges}
+                onChange={setInputChange}
                 value={editForm.jobTitle}
               />
             </label>
@@ -104,9 +106,10 @@ export default class Experience extends Component {
               <input
                 data-section-key="experience"
                 data-input-key="location"
+                data-form-type="editForm"
                 id="edit-experience-location"
                 placeholder="Mountain View, CA"
-                onChange={setEditChanges}
+                onChange={setInputChange}
                 value={editForm.location}
               />
             </label>
@@ -116,9 +119,10 @@ export default class Experience extends Component {
               <input
                 data-section-key="experience"
                 data-input-key="startDate"
+                data-form-type="editForm"
                 id="edit-experience-start-date"
                 placeholder="May 2020"
-                onChange={setEditChanges}
+                onChange={setInputChange}
                 value={editForm.startDate}
               />
             </label>
@@ -127,9 +131,10 @@ export default class Experience extends Component {
               <input
                 data-section-key="experience"
                 data-input-key="endDate"
+                data-form-type="editForm"
                 id="edit-experience-end-date"
                 placeholder="Sep. 2022"
-                onChange={setEditChanges}
+                onChange={setInputChange}
                 value={editForm.endDate}
               />
             </label>
@@ -138,10 +143,11 @@ export default class Experience extends Component {
               <textarea
                 data-section-key="experience"
                 data-input-key="description"
+                data-form-type="editForm"
                 id="edit-experience-description"
                 rows="10"
                 cols="30"
-                onChange={setEditChanges}
+                onChange={setInputChange}
                 value={editForm.description}
               />
             </label>
@@ -167,8 +173,9 @@ export default class Experience extends Component {
                 placeholder="Google"
                 data-section-key="experience"
                 data-input-key="company"
+                data-form-type="addForm"
                 value={company}
-                onChange={setAddForm}
+                onChange={setInputChange}
               />
             </label>
 
@@ -179,8 +186,9 @@ export default class Experience extends Component {
                 placeholder="Software Engineer"
                 data-section-key="experience"
                 data-input-key="jobTitle"
+                data-form-type="addForm"
                 value={jobTitle}
-                onChange={setAddForm}
+                onChange={setInputChange}
               />
             </label>
 
@@ -191,8 +199,9 @@ export default class Experience extends Component {
                 placeholder="Mountain View, CA"
                 data-section-key="experience"
                 data-input-key="location"
+                data-form-type="addForm"
                 value={location}
-                onChange={setAddForm}
+                onChange={setInputChange}
               />
             </label>
 
@@ -203,8 +212,9 @@ export default class Experience extends Component {
                 placeholder="May 2020"
                 data-section-key="experience"
                 data-input-key="startDate"
+                data-form-type="addForm"
                 value={startDate}
-                onChange={setAddForm}
+                onChange={setInputChange}
               />
             </label>
             <label htmlFor="experience-end-date">
@@ -214,8 +224,9 @@ export default class Experience extends Component {
                 placeholder="Sep. 2022"
                 data-section-key="experience"
                 data-input-key="endDate"
+                data-form-type="addForm"
                 value={endDate}
-                onChange={setAddForm}
+                onChange={setInputChange}
               />
             </label>
             <label htmlFor="experience-description">
@@ -226,8 +237,9 @@ export default class Experience extends Component {
                 cols="30"
                 data-section-key="experience"
                 data-input-key="description"
+                data-form-type="addForm"
                 value={description}
-                onChange={setAddForm}
+                onChange={setInputChange}
               />
             </label>
 
@@ -242,7 +254,7 @@ export default class Experience extends Component {
 Experience.propTypes = {
   toggleForm: PropTypes.func.isRequired,
   addItem: PropTypes.func.isRequired,
-  setAddForm: PropTypes.func.isRequired,
+  setInputChange: PropTypes.func.isRequired,
   experience: PropTypes.shape({
     items: PropTypes.arrayOf(
       PropTypes.shape({
@@ -258,6 +270,5 @@ Experience.propTypes = {
     edit: PropTypes.bool,
   }).isRequired,
   setEditState: PropTypes.func.isRequired,
-  setEditChanges: PropTypes.func.isRequired,
   setSaveEditItem: PropTypes.func.isRequired,
 };

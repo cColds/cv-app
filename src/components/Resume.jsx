@@ -134,15 +134,15 @@ export default class Resume extends Component {
     });
   };
 
-  setAddForm = (e) => {
-    const { inputKey, sectionKey } = e.target.dataset;
+  setInputChange = (e) => {
+    const { inputKey, sectionKey, formType } = e.target.dataset;
     const { state } = this;
     const section = state[sectionKey];
 
     this.setState({
       [sectionKey]: {
         ...section,
-        addForm: { ...section.addForm, [inputKey]: e.target.value },
+        [formType]: { ...section[formType], [inputKey]: e.target.value },
       },
     });
   };
@@ -166,20 +166,6 @@ export default class Resume extends Component {
           ...editedItems,
         },
       };
-    });
-  };
-
-  setEditChanges = (e) => {
-    const { inputKey, sectionKey } = e.currentTarget.dataset;
-    const { state } = this;
-    const section = state[sectionKey];
-
-    this.setState({
-      [sectionKey]: {
-        ...section,
-
-        editForm: { ...section.editForm, [inputKey]: e.target.value },
-      },
     });
   };
 
@@ -264,37 +250,33 @@ export default class Resume extends Component {
         <Experience
           toggleForm={this.toggleForm}
           addItem={this.addItem}
-          setAddForm={this.setAddForm}
           experience={experience}
           setEditState={this.setEditState}
-          setEditChanges={this.setEditChanges}
+          setInputChange={this.setInputChange}
           setSaveEditItem={this.setSaveEditItem}
         />
         <Education
           toggleForm={this.toggleForm}
-          setAddForm={this.setAddForm}
           addItem={this.addItem}
           education={education}
           setEditState={this.setEditState}
-          setEditChanges={this.setEditChanges}
+          setInputChange={this.setInputChange}
           setSaveEditItem={this.setSaveEditItem}
         />
         <Projects
           toggleForm={this.toggleForm}
-          setAddForm={this.setAddForm}
           projects={projects}
           addItem={this.addItem}
           setEditState={this.setEditState}
-          setEditChanges={this.setEditChanges}
+          setInputChange={this.setInputChange}
           setSaveEditItem={this.setSaveEditItem}
         />
         <Skills
           toggleForm={this.toggleForm}
-          setAddForm={this.setAddForm}
           skills={skills}
           addItem={this.addItem}
           setEditState={this.setEditState}
-          setEditChanges={this.setEditChanges}
+          setInputChange={this.setInputChange}
           setSaveEditItem={this.setSaveEditItem}
         />
       </div>
