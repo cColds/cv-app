@@ -11,6 +11,7 @@ export default class Projects extends Component {
       toggleEditForm,
       saveEdit,
       deleteItem,
+      preview,
     } = this.props;
     const { project, technologies, description, startDate, endDate } =
       projects.addForm;
@@ -19,7 +20,7 @@ export default class Projects extends Component {
       <section className="projects section">
         <h2 className="heading">Projects</h2>
         <div className="content-container">
-          <ul className={isAddFormOpen || edit ? "hide" : ""}>
+          <ul className={(isAddFormOpen || edit) && !preview ? "hide" : ""}>
             {projects.items.map(({ item, id }) => (
               <li key={id} className="item">
                 <div className="main-info">
@@ -36,7 +37,7 @@ export default class Projects extends Component {
                     {item.startDate} {item.endDate}
                   </div>
                 </div>
-                <div className="option">
+                <div className={`option ${preview && "hide"}`}>
                   <button
                     type="button"
                     data-section-key="projects"
@@ -70,7 +71,7 @@ export default class Projects extends Component {
             type="button"
             data-section-key="projects"
             onClick={toggleAddForm}
-            className={isAddFormOpen || edit ? "hide" : ""}
+            className={isAddFormOpen || edit || preview ? "hide" : ""}
           >
             Add Projects
           </button>
@@ -78,12 +79,11 @@ export default class Projects extends Component {
           {/* EDIT */}
 
           <form
-            className={edit ? "" : "hide"}
+            className={edit && !preview ? "" : "hide"}
             data-section-key="projects"
             onSubmit={(e) => {
               e.preventDefault();
               saveEdit(e);
-
               toggleEditForm(e);
             }}
           >
@@ -159,7 +159,7 @@ export default class Projects extends Component {
           <form
             data-section-key="projects"
             data-form-type="addForm"
-            className={isAddFormOpen ? "" : "hide"}
+            className={isAddFormOpen && !preview ? "" : "hide"}
             onSubmit={(e) => {
               e.preventDefault();
               toggleAddForm(e);
@@ -258,4 +258,5 @@ Projects.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
   saveEdit: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired,
+  preview: PropTypes.bool.isRequired,
 };

@@ -11,6 +11,7 @@ export default class Skills extends Component {
       handleInputChange,
       saveEdit,
       deleteItem,
+      preview,
     } = this.props;
     const { skill } = skills.addForm;
     const { edit, editForm, isAddFormOpen } = skills;
@@ -18,13 +19,13 @@ export default class Skills extends Component {
       <section className="skills section">
         <h2 className="heading">Skills</h2>
         <div className="content-container">
-          <ul className={isAddFormOpen || edit ? "hide" : ""}>
+          <ul className={(isAddFormOpen || edit) && !preview ? "hide" : ""}>
             {skills.items.map(({ item, id }) => (
               <li key={id} className="item">
                 <div className="main-info">
                   <div>{item.skill}</div>
                 </div>
-                <div className="options">
+                <div className={`options ${preview && "hide"}`}>
                   <button
                     type="button"
                     data-section-key="skills"
@@ -58,7 +59,7 @@ export default class Skills extends Component {
             type="button"
             data-section-key="skills"
             data-form-type="addForm"
-            className={isAddFormOpen || edit ? "hide" : ""}
+            className={isAddFormOpen || edit || preview ? "hide" : ""}
             onClick={(e) => {
               e.preventDefault();
               toggleAddForm(e);
@@ -70,7 +71,7 @@ export default class Skills extends Component {
           {/* EDIT */}
 
           <form
-            className={edit ? "" : "hide"}
+            className={edit && !preview ? "" : "hide"}
             data-section-key="skills"
             onSubmit={(e) => {
               e.preventDefault();
@@ -100,7 +101,7 @@ export default class Skills extends Component {
           <form
             data-section-key="skills"
             data-form-type="addForm"
-            className={isAddFormOpen ? "" : "hide"}
+            className={isAddFormOpen && !preview ? "" : "hide"}
             onSubmit={(e) => {
               e.preventDefault();
               toggleAddForm(e);
@@ -145,4 +146,5 @@ Skills.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
   saveEdit: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired,
+  preview: PropTypes.bool.isRequired,
 };

@@ -114,6 +114,7 @@ export default class Resume extends Component {
         editId: "",
         isAddFormOpen: false,
       },
+      preview: false,
     };
   }
 
@@ -226,18 +227,29 @@ export default class Resume extends Component {
     });
   };
 
+  togglePreview = () => {
+    const { preview } = this.state;
+    this.setState({ preview: !preview });
+  };
+
   render() {
-    const { personalInfo, experience, education, projects, skills } =
+    const { preview, personalInfo, experience, education, projects, skills } =
       this.state;
 
     return (
       <div className="resume">
+        <button type="button" onClick={this.togglePreview}>
+          Preview
+        </button>
+
         <PersonalInfo
           saveEdit={this.saveEdit}
           handleInputChange={this.handleInputChange}
           toggleEditForm={this.toggleEditForm}
           personalInfo={personalInfo}
+          preview={preview}
         />
+
         <Experience
           toggleAddForm={this.toggleAddForm}
           addItem={this.addItem}
@@ -246,7 +258,9 @@ export default class Resume extends Component {
           handleInputChange={this.handleInputChange}
           saveEdit={this.saveEdit}
           deleteItem={this.deleteItem}
+          preview={preview}
         />
+
         <Education
           toggleAddForm={this.toggleAddForm}
           addItem={this.addItem}
@@ -255,7 +269,9 @@ export default class Resume extends Component {
           handleInputChange={this.handleInputChange}
           saveEdit={this.saveEdit}
           deleteItem={this.deleteItem}
+          preview={preview}
         />
+
         <Projects
           toggleAddForm={this.toggleAddForm}
           projects={projects}
@@ -264,7 +280,9 @@ export default class Resume extends Component {
           handleInputChange={this.handleInputChange}
           saveEdit={this.saveEdit}
           deleteItem={this.deleteItem}
+          preview={preview}
         />
+
         <Skills
           toggleAddForm={this.toggleAddForm}
           skills={skills}
@@ -273,6 +291,7 @@ export default class Resume extends Component {
           handleInputChange={this.handleInputChange}
           saveEdit={this.saveEdit}
           deleteItem={this.deleteItem}
+          preview={preview}
         />
       </div>
     );
