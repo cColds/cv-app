@@ -42,8 +42,10 @@
           padding-right: 10px;
         }
 
-        .options button {
-          display: flex;
+        .options {
+          button {
+            display: flex;
+          }
         }
       }
     }

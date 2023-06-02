@@ -139,6 +139,20 @@ export default class Resume extends Component {
     });
   };
 
+  deleteItem = (e, targetId) => {
+    const { sectionKey } = e.currentTarget.dataset;
+    const { state } = this;
+    const section = state[sectionKey];
+    const updatedItems = section.items.filter((item) => item.id !== targetId);
+
+    this.setState({
+      [sectionKey]: {
+        ...section,
+        items: updatedItems,
+      },
+    });
+  };
+
   saveEdit = (e) => {
     const { sectionKey } = e.currentTarget.dataset;
     const { state } = this;
@@ -213,14 +227,8 @@ export default class Resume extends Component {
   };
 
   render() {
-    const {
-      personalInfo,
-
-      experience,
-      education,
-      projects,
-      skills,
-    } = this.state;
+    const { personalInfo, experience, education, projects, skills } =
+      this.state;
 
     return (
       <div className="resume">
@@ -237,6 +245,7 @@ export default class Resume extends Component {
           toggleEditForm={this.toggleEditForm}
           handleInputChange={this.handleInputChange}
           saveEdit={this.saveEdit}
+          deleteItem={this.deleteItem}
         />
         <Education
           toggleAddForm={this.toggleAddForm}
@@ -245,6 +254,7 @@ export default class Resume extends Component {
           toggleEditForm={this.toggleEditForm}
           handleInputChange={this.handleInputChange}
           saveEdit={this.saveEdit}
+          deleteItem={this.deleteItem}
         />
         <Projects
           toggleAddForm={this.toggleAddForm}
@@ -253,6 +263,7 @@ export default class Resume extends Component {
           toggleEditForm={this.toggleEditForm}
           handleInputChange={this.handleInputChange}
           saveEdit={this.saveEdit}
+          deleteItem={this.deleteItem}
         />
         <Skills
           toggleAddForm={this.toggleAddForm}
@@ -261,6 +272,7 @@ export default class Resume extends Component {
           toggleEditForm={this.toggleEditForm}
           handleInputChange={this.handleInputChange}
           saveEdit={this.saveEdit}
+          deleteItem={this.deleteItem}
         />
       </div>
     );
