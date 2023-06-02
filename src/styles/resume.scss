@@ -4,10 +4,10 @@
   flex-direction: column;
 
   border: 2px solid #ddd;
-  width: 50%;
+  min-width: 50%;
   min-height: 75%;
   padding: 1.5rem;
-  margin: 1.5rem;
+  margin: 0.5rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
@@ -18,6 +18,8 @@
     .heading {
       border-bottom: 2px solid #ddd;
       text-transform: uppercase;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
 
     .content-container {
@@ -30,8 +32,12 @@
         display: flex;
         justify-content: space-between;
 
-        .main-info span {
-          font-size: 1rem;
+        .main-info {
+          overflow-wrap: anywhere;
+
+          span {
+            font-size: 1rem;
+          }
         }
 
         .side-info {
@@ -40,12 +46,34 @@
           align-items: flex-end;
           margin-left: auto;
           padding-right: 10px;
+          overflow-wrap: anywhere;
         }
 
         .options {
           button {
             display: flex;
           }
+        }
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+
+        .item {
+          flex-wrap: wrap;
+        }
+      }
+
+      form {
+        input,
+        textarea {
+          width: 100%;
+        }
+
+        label {
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
       }
     }
