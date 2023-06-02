@@ -13,8 +13,13 @@
       gap: 15px;
       flex-wrap: wrap;
 
-      h3 {
-        overflow-wrap: anywhere;
+      div {
+        display: flex;
+        gap: 5px;
+
+        h3 {
+          overflow-wrap: anywhere;
+        }
       }
     }
   }
