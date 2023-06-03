@@ -37,7 +37,7 @@ export default class Projects extends Component {
                     {item.startDate} {item.endDate}
                   </div>
                 </div>
-                <div className={`option ${preview && "hide"}`}>
+                <div className={`options ${preview && "hide"}`}>
                   <button
                     type="button"
                     data-section-key="projects"
