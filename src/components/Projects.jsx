@@ -41,6 +41,7 @@ export default class Projects extends Component {
                   <button
                     type="button"
                     data-section-key="projects"
+                    className="edit"
                     onClick={(e) => {
                       toggleEditForm(e, item, id);
                     }}
@@ -53,6 +54,7 @@ export default class Projects extends Component {
                   <button
                     type="button"
                     data-section-key="projects"
+                    className="delete"
                     onClick={(e) => {
                       deleteItem(e, id);
                     }}
@@ -71,7 +73,9 @@ export default class Projects extends Component {
             type="button"
             data-section-key="projects"
             onClick={toggleAddForm}
-            className={isAddFormOpen || edit || preview ? "hide" : ""}
+            className={`btn-primary ${
+              isAddFormOpen || edit || preview ? "hide" : ""
+            }`}
           >
             Add Projects
           </button>
@@ -151,7 +155,9 @@ export default class Projects extends Component {
               />
             </label>
 
-            <button type="submit">Save</button>
+            <button type="submit" className="btn-primary">
+              Save
+            </button>
           </form>
 
           {/* ADD */}
@@ -227,7 +233,9 @@ export default class Projects extends Component {
                 value={description}
               />
             </label>
-            <button type="submit">Save</button>
+            <button type="submit" className="btn-primary">
+              Save
+            </button>
           </form>
         </div>
       </section>

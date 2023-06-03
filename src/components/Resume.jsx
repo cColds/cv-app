@@ -238,7 +238,11 @@ export default class Resume extends Component {
 
     return (
       <div className="resume">
-        <button type="button" onClick={this.togglePreview}>
+        <button
+          type="button"
+          className="btn-primary preview"
+          onClick={this.togglePreview}
+        >
           Preview
         </button>
 

@@ -20,6 +20,7 @@ export default class PersonalInfo extends Component {
             <button
               type="button"
               data-section-key="personalInfo"
+              className="edit"
               onClick={(e) => toggleEditForm(e, item, id)}
             >
               <svg
@@ -141,7 +142,9 @@ export default class PersonalInfo extends Component {
                 value={editForm.address}
               />
             </label>
-            <button type="submit">Save</button>
+            <button type="submit" className="btn-primary">
+              Save
+            </button>
           </form>
         </div>
       </section>

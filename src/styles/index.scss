@@ -16,6 +16,13 @@ body {
 button {
   cursor: pointer;
   overflow-wrap: anywhere;
+  border: 0;
+  border-radius: 5px;
+  padding: 5px;
+
+  &:hover {
+    opacity: 0.85;
+  }
 }
 
 form {
@@ -31,8 +38,15 @@ h3 {
 svg {
   width: 24px;
   height: 24px;
+  display: flex;
 }
 
 .hide {
   display: none !important;
+}
+
+.btn-primary {
+  background-color: #3b82f6;
+  color: white;
+  transition: 0.3s;
 }

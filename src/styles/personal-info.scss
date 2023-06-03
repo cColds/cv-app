@@ -2,6 +2,14 @@
   display: flex;
   justify-content: center;
 
+  .edit {
+    background-color: #075985;
+
+    svg {
+      fill: white;
+    }
+  }
+
   .item {
     display: flex;
     flex-direction: column;

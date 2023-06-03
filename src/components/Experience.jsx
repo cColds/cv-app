@@ -43,6 +43,7 @@ export default class Experience extends Component {
                   <button
                     type="button"
                     data-section-key="experience"
+                    className="edit"
                     onClick={(e) => {
                       toggleEditForm(e, item, id);
                     }}
@@ -54,6 +55,7 @@ export default class Experience extends Component {
                   </button>
                   <button
                     type="button"
+                    className="delete"
                     data-section-key="experience"
                     onClick={(e) => {
                       deleteItem(e, id);
@@ -73,7 +75,9 @@ export default class Experience extends Component {
             type="button"
             data-section-key="experience"
             onClick={toggleAddForm}
-            className={isAddFormOpen || edit || preview ? "hide" : ""}
+            className={`btn-primary ${
+              isAddFormOpen || edit || preview ? "hide" : ""
+            }`}
           >
             Add Experience
           </button>
@@ -166,7 +170,9 @@ export default class Experience extends Component {
               />
             </label>
 
-            <button type="submit">Save</button>
+            <button type="submit" className="btn-primary">
+              Save
+            </button>
           </form>
 
           {/* ADD */}
@@ -258,7 +264,9 @@ export default class Experience extends Component {
               />
             </label>
 
-            <button type="submit">Save</button>
+            <button type="submit" className="btn-primary">
+              Save
+            </button>
           </form>
         </div>
       </section>

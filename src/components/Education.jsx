@@ -44,6 +44,7 @@ export default class Education extends Component {
                   <button
                     type="button"
                     data-section-key="education"
+                    className="edit"
                     onClick={(e) => {
                       toggleEditForm(e, item, id);
                     }}
@@ -56,6 +57,7 @@ export default class Education extends Component {
                   <button
                     type="button"
                     data-section-key="education"
+                    className="delete"
                     onClick={(e) => {
                       deleteItem(e, id);
                     }}
@@ -74,7 +76,9 @@ export default class Education extends Component {
             type="button"
             data-section-key="education"
             onClick={toggleAddForm}
-            className={isAddFormOpen || edit || preview ? "hide" : ""}
+            className={`btn-primary ${
+              isAddFormOpen || edit || preview ? "hide" : ""
+            }`}
           >
             Add Education
           </button>
@@ -168,7 +172,9 @@ export default class Education extends Component {
               />
             </label>
 
-            <button type="submit">Save</button>
+            <button type="submit" className="btn-primary">
+              Save
+            </button>
           </form>
 
           {/* ADD  */}
@@ -258,7 +264,9 @@ export default class Education extends Component {
                 onChange={handleInputChange}
               />
             </label>
-            <button type="submit">Save</button>
+            <button type="submit" className="btn-primary">
+              Save
+            </button>
           </form>
         </div>
       </section>
