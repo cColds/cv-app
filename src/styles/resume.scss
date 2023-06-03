@@ -17,6 +17,22 @@
     max-width: 100%;
   }
 
+  .delete {
+    background-color: #e11d48;
+
+    svg {
+      fill: white;
+    }
+  }
+
+  .edit {
+    background-color: #075985;
+
+    svg {
+      fill: white;
+    }
+  }
+
   .section {
     width: 100%;
     padding: 0.5rem;
@@ -57,23 +73,8 @@
 
         .options {
           display: flex;
+          align-items: flex-start;
           gap: 5px;
-
-          .delete {
-            background-color: #e11d48;
-
-            svg {
-              fill: white;
-            }
-          }
-
-          .edit {
-            background-color: #075985;
-
-            svg {
-              fill: white;
-            }
-          }
 
           button {
             display: flex;
