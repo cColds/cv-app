@@ -248,7 +248,6 @@ export default function Resume() {
         toggleEditForm={toggleEditForm}
         personalInfo={personalInfo}
         preview={preview}
-        state={state}
       />
 
       <Experience
