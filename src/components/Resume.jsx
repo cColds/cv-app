@@ -1,124 +1,120 @@
+import { useState } from "react";
 import uniqid from "uniqid";
-import { Component } from "react";
 import PersonalInfo from "./PersonalInfo";
 import Experience from "./Experience";
 import Education from "./Education";
 import Projects from "./Projects";
 import Skills from "./Skills";
 
-export default class Resume extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      personalInfo: {
-        items: [
-          {
-            item: {
-              fullName: "",
-              jobTitle: "",
-              phone: "",
-              email: "",
-              address: "",
-            },
-            id: uniqid(),
+export default function Resume() {
+  const [state, setState] = useState({
+    personalInfo: {
+      items: [
+        {
+          item: {
+            fullName: "",
+            jobTitle: "",
+            phone: "",
+            email: "",
+            address: "",
           },
-        ],
-        editForm: {
-          fullName: "",
-          jobTitle: "",
-          phone: "",
-          email: "",
-          address: "",
+          id: uniqid(),
         },
-        editId: "",
-        edit: false,
+      ],
+      editForm: {
+        fullName: "",
+        jobTitle: "",
+        phone: "",
+        email: "",
+        address: "",
       },
-      experience: {
-        items: [],
-        addForm: {
-          company: "",
-          jobTitle: "",
-          description: "",
-          startDate: "",
-          endDate: "",
-          location: "",
-        },
-        editForm: {
-          company: "",
-          jobTitle: "",
-          description: "",
-          startDate: "",
-          endDate: "",
-          location: "",
-        },
-        edit: false,
-        editId: "",
-        isAddFormOpen: false,
+      editId: "",
+      edit: false,
+    },
+    experience: {
+      items: [],
+      addForm: {
+        company: "",
+        jobTitle: "",
+        description: "",
+        startDate: "",
+        endDate: "",
+        location: "",
       },
-
-      education: {
-        items: [],
-        addForm: {
-          school: "",
-          degree: "",
-          startDate: "",
-          endDate: "",
-          location: "",
-          description: "",
-        },
-        editForm: {
-          school: "",
-          degree: "",
-          location: "",
-          startDate: "",
-          endDate: "",
-          description: "",
-        },
-        edit: false,
-        editId: "",
-        isAddFormOpen: false,
+      editForm: {
+        company: "",
+        jobTitle: "",
+        description: "",
+        startDate: "",
+        endDate: "",
+        location: "",
       },
+      edit: false,
+      editId: "",
+      isAddFormOpen: false,
+    },
 
-      projects: {
-        items: [],
-        addForm: {
-          project: "",
-          technologies: "",
-          startDate: "",
-          endDate: "",
-          description: "",
-        },
+    education: {
+      items: [],
+      addForm: {
+        school: "",
+        degree: "",
+        startDate: "",
+        endDate: "",
+        location: "",
+        description: "",
+      },
+      editForm: {
+        school: "",
+        degree: "",
+        location: "",
+        startDate: "",
+        endDate: "",
+        description: "",
+      },
+      edit: false,
+      editId: "",
+      isAddFormOpen: false,
+    },
 
-        editForm: {
-          project: "",
-          technologies: "",
-          startDate: "",
-          endDate: "",
-          description: "",
-        },
-        edit: false,
-        editId: "",
-        isAddFormOpen: false,
+    projects: {
+      items: [],
+      addForm: {
+        project: "",
+        technologies: "",
+        startDate: "",
+        endDate: "",
+        description: "",
       },
 
-      skills: {
-        items: [],
-        addForm: {
-          skill: "",
-        },
-        editForm: {
-          skill: "",
-        },
-        edit: false,
-        editId: "",
-        isAddFormOpen: false,
+      editForm: {
+        project: "",
+        technologies: "",
+        startDate: "",
+        endDate: "",
+        description: "",
       },
-      preview: false,
-    };
-  }
+      edit: false,
+      editId: "",
+      isAddFormOpen: false,
+    },
 
-  static getResetFormValues = (objects) => {
+    skills: {
+      items: [],
+      addForm: {
+        skill: "",
+      },
+      editForm: {
+        skill: "",
+      },
+      edit: false,
+      editId: "",
+      isAddFormOpen: false,
+    },
+    preview: false,
+  });
+
+  const getResetFormValues = (objects) => {
     const copy = { ...objects };
     Object.keys(copy).forEach((key) => {
       copy[key] = "";
@@ -127,12 +123,12 @@ export default class Resume extends Component {
     return copy;
   };
 
-  handleInputChange = (e) => {
+  const handleInputChange = (e) => {
     const { inputKey, sectionKey, formType } = e.target.dataset;
-    const { state } = this;
     const section = state[sectionKey];
 
-    this.setState({
+    setState({
+      ...state,
       [sectionKey]: {
         ...section,
         [formType]: { ...section[formType], [inputKey]: e.target.value },
@@ -140,13 +136,13 @@ export default class Resume extends Component {
     });
   };
 
-  deleteItem = (e, targetId) => {
+  const deleteItem = (e, targetId) => {
     const { sectionKey } = e.currentTarget.dataset;
-    const { state } = this;
     const section = state[sectionKey];
     const updatedItems = section.items.filter((item) => item.id !== targetId);
 
-    this.setState({
+    setState({
+      ...state,
       [sectionKey]: {
         ...section,
         items: updatedItems,
@@ -154,9 +150,8 @@ export default class Resume extends Component {
     });
   };
 
-  saveEdit = (e) => {
+  const saveEdit = (e) => {
     const { sectionKey } = e.currentTarget.dataset;
-    const { state } = this;
     const section = state[sectionKey];
     const updateItems = section.items.map(({ item, id }) => {
       if (section.editId === id) {
@@ -166,16 +161,16 @@ export default class Resume extends Component {
       return { item: { ...item }, id };
     });
 
-    this.setState({ [sectionKey]: { ...section, items: updateItems } });
+    setState({ ...state, [sectionKey]: { ...section, items: updateItems } });
   };
 
-  addItem = (e) => {
+  const addItem = (e) => {
     const { sectionKey } = e.target.dataset;
-    const { state } = this;
     const section = state[sectionKey];
-    const resetFormValues = Resume.getResetFormValues(section.addForm);
+    const resetFormValues = getResetFormValues(section.addForm);
 
-    this.setState({
+    setState({
+      ...state,
       [sectionKey]: {
         items: section.items.concat({
           item: { ...section.addForm },
@@ -194,21 +189,20 @@ export default class Resume extends Component {
     });
   };
 
-  toggleEditForm = (e, item, id = "") => {
+  const toggleEditForm = (e, item, id = "") => {
     const { sectionKey } = e.currentTarget.dataset;
 
-    this.setState((prevState) => {
+    setState((prevState) => {
       const section = prevState[sectionKey];
-      const updateEditForm =
-        item || Resume.getResetFormValues(section.editForm);
+      const updateEditForm = item || getResetFormValues(section.editForm);
       const editedItems = structuredClone({
         ...section,
         edit: !section.edit,
         editForm: { ...updateEditForm },
         editId: id,
       });
-
       return {
+        ...prevState,
         [sectionKey]: {
           ...editedItems,
         },
@@ -216,88 +210,90 @@ export default class Resume extends Component {
     });
   };
 
-  toggleAddForm = (e) => {
+  const toggleAddForm = (e) => {
     const { sectionKey } = e.currentTarget.dataset;
 
-    this.setState((prevState) => {
+    setState((prevState) => {
       const section = prevState[sectionKey];
       const { isAddFormOpen } = section;
 
-      return { [sectionKey]: { ...section, isAddFormOpen: !isAddFormOpen } };
+      return {
+        ...prevState,
+        [sectionKey]: { ...section, isAddFormOpen: !isAddFormOpen },
+      };
     });
   };
 
-  togglePreview = () => {
-    const { preview } = this.state;
-    this.setState({ preview: !preview });
+  const togglePreview = () => {
+    const { preview } = state;
+    setState({ ...state, preview: !preview });
   };
 
-  render() {
-    const { preview, personalInfo, experience, education, projects, skills } =
-      this.state;
+  const { preview, personalInfo, experience, education, projects, skills } =
+    state;
 
-    return (
-      <div className="resume">
-        <button
-          type="button"
-          className="btn-primary preview"
-          onClick={this.togglePreview}
-        >
-          Preview
-        </button>
+  return (
+    <div className="resume">
+      <button
+        type="button"
+        className="btn-primary preview"
+        onClick={togglePreview}
+      >
+        Preview
+      </button>
 
-        <PersonalInfo
-          saveEdit={this.saveEdit}
-          handleInputChange={this.handleInputChange}
-          toggleEditForm={this.toggleEditForm}
-          personalInfo={personalInfo}
-          preview={preview}
-        />
+      <PersonalInfo
+        saveEdit={saveEdit}
+        handleInputChange={handleInputChange}
+        toggleEditForm={toggleEditForm}
+        personalInfo={personalInfo}
+        preview={preview}
+        state={state}
+      />
 
-        <Experience
-          toggleAddForm={this.toggleAddForm}
-          addItem={this.addItem}
-          experience={experience}
-          toggleEditForm={this.toggleEditForm}
-          handleInputChange={this.handleInputChange}
-          saveEdit={this.saveEdit}
-          deleteItem={this.deleteItem}
-          preview={preview}
-        />
+      <Experience
+        toggleAddForm={toggleAddForm}
+        addItem={addItem}
+        experience={experience}
+        toggleEditForm={toggleEditForm}
+        handleInputChange={handleInputChange}
+        saveEdit={saveEdit}
+        deleteItem={deleteItem}
+        preview={preview}
+      />
 
-        <Education
-          toggleAddForm={this.toggleAddForm}
-          addItem={this.addItem}
-          education={education}
-          toggleEditForm={this.toggleEditForm}
-          handleInputChange={this.handleInputChange}
-          saveEdit={this.saveEdit}
-          deleteItem={this.deleteItem}
-          preview={preview}
-        />
+      <Education
+        toggleAddForm={toggleAddForm}
+        addItem={addItem}
+        education={education}
+        toggleEditForm={toggleEditForm}
+        handleInputChange={handleInputChange}
+        saveEdit={saveEdit}
+        deleteItem={deleteItem}
+        preview={preview}
+      />
 
-        <Projects
-          toggleAddForm={this.toggleAddForm}
-          projects={projects}
-          addItem={this.addItem}
-          toggleEditForm={this.toggleEditForm}
-          handleInputChange={this.handleInputChange}
-          saveEdit={this.saveEdit}
-          deleteItem={this.deleteItem}
-          preview={preview}
-        />
+      <Projects
+        toggleAddForm={toggleAddForm}
+        projects={projects}
+        addItem={addItem}
+        toggleEditForm={toggleEditForm}
+        handleInputChange={handleInputChange}
+        saveEdit={saveEdit}
+        deleteItem={deleteItem}
+        preview={preview}
+      />
 
-        <Skills
-          toggleAddForm={this.toggleAddForm}
-          skills={skills}
-          addItem={this.addItem}
-          toggleEditForm={this.toggleEditForm}
-          handleInputChange={this.handleInputChange}
-          saveEdit={this.saveEdit}
-          deleteItem={this.deleteItem}
-          preview={preview}
-        />
-      </div>
-    );
-  }
+      <Skills
+        toggleAddForm={toggleAddForm}
+        skills={skills}
+        addItem={addItem}
+        toggleEditForm={toggleEditForm}
+        handleInputChange={handleInputChange}
+        saveEdit={saveEdit}
+        deleteItem={deleteItem}
+        preview={preview}
+      />
+    </div>
+  );
 }
